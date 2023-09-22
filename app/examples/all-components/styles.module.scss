@@ -1,0 +1,19 @@
+.wrapper {
+    padding: 2rem;
+    background-color: beige;
+    color: #000;
+    min-height: 100vh;
+    
+    .atoms, .molecules {
+        border-radius: 5px;
+        padding: 1rem 2rem;
+    }
+    
+    .atoms {        
+        background-color: bisque;
+    }
+    
+    .molecules {
+        background-color: lightblue;
+    }
+}
