@@ -10,10 +10,10 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-DangerousComponent';
- 
+
 import 'material-icons/iconfont/material-icons.scss';
 import LottiePlayer from '@/shared/components/hs-LottiePlayer/HS-LottiePlayer';
-import screensaverLottie from '../../../public/lottie-files/Screensaver BG.json';
+import screensaverLottie from '@/public/lottie-files/Screensaver BG.json';
 
 export const metadata: Metadata = {
   title: 'SCO - Components',
@@ -61,15 +61,15 @@ export default function AllComponents() {
             <Typography>
               Lottie component example
               <LottiePlayer
-                loop
                 animationData={screensaverLottie}
-                play
+                loop={false}
+                play={false}
               />
 
             </Typography>
           </AccordionDetails>
         </Accordion>
-                
+
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -78,8 +78,8 @@ export default function AllComponents() {
           >
             <Typography>Dangerous Component</Typography>
           </AccordionSummary>
-          <AccordionDetails>           
-              <HSDangerousComponent data='DANGEROUS COMPONENT' />           
+          <AccordionDetails>
+            <HSDangerousComponent data='DANGEROUS COMPONENT' />
           </AccordionDetails>
         </Accordion>
 
@@ -92,20 +92,20 @@ export default function AllComponents() {
             <Typography>SCSS Variable Usage</Typography>
           </AccordionSummary>
           <AccordionDetails>
-              <div className={styles.test}>
-                <p className={styles.primary18WNormalBlack2}>
-                  This is a sample test to test the scss variables and mixins.
-                </p>
-                <p className={styles.secondary28W600White3}>
-                  This is a sample test to test the scss variables and mixins.
-                </p>
-                <p className={styles.primary32W600Orange1}>
-                  This is a sample test to test the scss variables and mixins.
-                </p>
-                <p className={styles.mixinExample}>
-                  This is a sample test to test the scss variables and mixins.
-                </p>
-              </div>
+            <div className={styles.test}>
+              <p className={styles.primary18WNormalBlack2}>
+                This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.secondary28W600White3}>
+                This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.primary32W600Orange1}>
+                This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.mixinExample}>
+                This is a sample test to test the scss variables and mixins.
+              </p>
+            </div>
           </AccordionDetails>
         </Accordion>
 
