@@ -15,13 +15,13 @@ import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-D
 export const metadata: Metadata = {
   title: 'SCO - Components',
 }
- 
+
 export default function AllComponents() {
-  
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.atoms}>
-        
+
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -30,21 +30,21 @@ export default function AllComponents() {
           >
             <Typography>Button</Typography>
           </AccordionSummary>
-          
+
           <AccordionDetails>
             <Typography>
-              <HSButton variant='contained' color='primary' 
+              <HSButton variant='contained' color='primary'
                 onClick={() => console.log('test button')}>
-                  Click!
+                Click!
               </HSButton>
-              
+
               <HSButton variant='outlined' startIcon={<DeleteIcon />}>
-                  Click!
-              </HSButton>              
-              
+                Click!
+              </HSButton>
+
             </Typography>
           </AccordionDetails>
-          
+
         </Accordion>
         <Accordion>
           <AccordionSummary
@@ -59,7 +59,8 @@ export default function AllComponents() {
               Lottie component usage example
             </Typography>
           </AccordionDetails>
-        </Accordion>        
+        </Accordion>
+                
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -71,7 +72,34 @@ export default function AllComponents() {
           <AccordionDetails>           
               <HSDangerousComponent data='DANGEROUS COMPONENT' />           
           </AccordionDetails>
-        </Accordion>        
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>SCSS Variable Usage</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+              <div className={styles.test}>
+                <p className={styles.primary18WNormalBlack2}>
+                  This is a sample test to test the scss variables and mixins.
+                </p>
+                <p className={styles.secondary28W600White3}>
+                  This is a sample test to test the scss variables and mixins.
+                </p>
+                <p className={styles.primary32W600Orange1}>
+                  This is a sample test to test the scss variables and mixins.
+                </p>
+                <p className={styles.mixinExample}>
+                  This is a sample test to test the scss variables and mixins.
+                </p>
+              </div>
+          </AccordionDetails>
+        </Accordion>
+
       </div>
     </div>
   );
