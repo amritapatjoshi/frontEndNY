@@ -1,5 +1,4 @@
 "use client"
-
 import { Metadata } from 'next'
 import styles from './styles.module.scss'
 import React from 'react';
@@ -12,6 +11,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-DangerousComponent';
  
+import 'material-icons/iconfont/material-icons.scss';
+
 export const metadata: Metadata = {
   title: 'SCO - Components',
 }
@@ -99,6 +100,53 @@ export default function AllComponents() {
               </div>
           </AccordionDetails>
         </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>All Material Icons css class examples</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.icons}>
+              Filled Icon: <span className="material-icons">account_circle</span>
+              Round Icon: <span className="material-icons-round">account_circle</span>
+              Outlined Icon: <span className="material-icons-outlined">account_circle</span>
+              Sharp Icon: <span className="material-icons-sharp">account_circle</span>
+              Two-tone Icon: <span className="material-icons-two-tone">account_circle</span>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>All icons in with *-round css class.</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.icons}>
+              <span className="material-icons">search</span>
+              <span className="material-icons-round">accessibility_new</span>
+              <span className="material-icons-round">language</span>
+              <span className="material-icons-round">account_circle</span>
+              <span className="material-icons-round">help</span>
+              <span className="material-icons-round">volume_up</span>
+              <span className="material-icons-round">volume_off</span>
+              <span className="material-icons-round">volume_down</span>
+              <span className="material-icons-round">close</span>
+              <span className="material-icons-round">arrow_right_alt</span>
+              <span className="material-icons-round">backspace</span>
+              <span className="material-icons-round">credit_card</span>
+              <span className="material-icons-round">payments</span>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
 
       </div>
     </div>

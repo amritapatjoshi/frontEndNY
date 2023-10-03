@@ -7,6 +7,11 @@
     min-height: 100vh;
 }
 
+.icons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 // This is a sample implementation of the mixin created in the variables.scss file.
 .mixinExample {
     @include fontFeatures('primary', 600, 36, 48, #99004C);
