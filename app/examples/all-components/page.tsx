@@ -10,6 +10,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteIcon from '@mui/icons-material/Delete';
+import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-DangerousComponent';
  
 export const metadata: Metadata = {
   title: 'SCO - Components',
@@ -59,7 +60,18 @@ export default function AllComponents() {
             </Typography>
           </AccordionDetails>
         </Accordion>        
-        
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Dangerous Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>           
+              <HSDangerousComponent data='DANGEROUS COMPONENT' />           
+          </AccordionDetails>
+        </Accordion>        
       </div>
     </div>
   );
