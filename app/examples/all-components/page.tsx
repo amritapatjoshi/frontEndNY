@@ -12,6 +12,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-DangerousComponent';
  
 import 'material-icons/iconfont/material-icons.scss';
+import LottiePlayer from '@/shared/components/hs-LottiePlayer/HS-LottiePlayer';
+import screensaverLottie from '../../../public/lottie-files/Screensaver BG.json';
 
 export const metadata: Metadata = {
   title: 'SCO - Components',
@@ -57,7 +59,13 @@ export default function AllComponents() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              Lottie component usage example
+              Lottie component example
+              <LottiePlayer
+                loop
+                animationData={screensaverLottie}
+                play
+              />
+
             </Typography>
           </AccordionDetails>
         </Accordion>
