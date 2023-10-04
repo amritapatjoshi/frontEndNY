@@ -62,8 +62,6 @@ export default function AllComponents() {
               <LottiePlayer
                 // pass the required lottie file to animationData
                 animationData={screensaverLottie}
-                loop={false}
-                play={false}
               />
 
             </Typography>
