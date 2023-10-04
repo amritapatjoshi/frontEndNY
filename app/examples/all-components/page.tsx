@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteIcon from '@mui/icons-material/Delete';
 import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-DangerousComponent';
-
 import 'material-icons/iconfont/material-icons.scss';
 import LottiePlayer from '@/shared/components/hs-LottiePlayer/HS-LottiePlayer';
 import screensaverLottie from '@/public/lottie-files/Screensaver BG.json';
@@ -61,6 +60,7 @@ export default function AllComponents() {
             <Typography>
               Lottie component example
               <LottiePlayer
+                // pass the required lottie file to animationData
                 animationData={screensaverLottie}
                 loop={false}
                 play={false}
