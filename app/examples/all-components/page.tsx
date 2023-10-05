@@ -13,6 +13,7 @@ import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-D
 import 'material-icons/iconfont/material-icons.scss';
 import LottiePlayer from '@/shared/components/hs-LottiePlayer/HS-LottiePlayer';
 import screensaverLottie from '@/public/lottie-files/Screensaver BG.json';
+import MultiLinks from '@/shared/components/hs-three-links/HS-three-links';
 
 export const metadata: Metadata = {
   title: 'SCO - Components',
@@ -153,7 +154,45 @@ export default function AllComponents() {
           </AccordionDetails>
         </Accordion>
 
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Multi Links Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
 
+            <h3>Multi Links Component with icons</h3>
+            <MultiLinks
+              displayIcons={true}
+              clickEventOne={() => console.log("1st link clicked")}
+              clickEventTwo={() => console.log("2nd link clicked")}
+              clickEventThree={() => console.log("3rd link clicked")}
+            />
+            
+            <h3>Multi Links Component without Icons</h3>
+            <MultiLinks
+              clickEventOne={() => console.log("1st link clicked")}
+              clickEventTwo={() => console.log("2nd link clicked")}
+              clickEventThree={() => console.log("3rd link clicked")}
+            />
+            
+            <h3>Multi Links Component with Icons and overridden css</h3>
+            <MultiLinks
+              displayIcons={true}
+              clickEventOne={() => console.log("1st link clicked")}
+              clickEventTwo={() => console.log("2nd link clicked")}
+              clickEventThree={() => console.log("3rd link clicked")}
+              styles={{
+                'fontSize': '3em',
+                'color': 'pink'
+              }}
+            />
+
+          </AccordionDetails>
+        </Accordion>
       </div>
     </div>
   );
