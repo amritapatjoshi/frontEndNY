@@ -1,0 +1,19 @@
+@import "../../../styles/variables";
+@use "sass:map";
+
+.userLinksWrapper {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    font-size: 1em;
+    font-weight: map.get($hs-font-weight , 600);
+    cursor: pointer;
+
+    .hidden {
+        display: none;
+    }
+
+    span {
+        font-size: 2em;
+    }
+}
