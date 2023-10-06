@@ -3,7 +3,7 @@ import Button, { ButtonProps } from "@mui/material/Button"
 import { styled } from "@mui/material/styles"
 
 interface IButtonProps extends ButtonProps {
-    // Add any custom prop components here
+    // Add any custom prop components
 }
 
 const StyledButton = styled(Button) ({
