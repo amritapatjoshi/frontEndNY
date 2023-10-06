@@ -1,18 +1,23 @@
 "use client"
+import { Metadata } from 'next'
+import styles from './styles.module.scss'
+import React from 'react';
+import HSButton from '@/shared/components/hs-button/HS-Button';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import DeleteIcon from '@mui/icons-material/Delete';
+import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-DangerousComponent';
+import 'material-icons/iconfont/material-icons.scss';
+import LottiePlayer from '@/shared/components/hs-LottiePlayer/HS-LottiePlayer';
+import screensaverLottie from '@/public/lottie-files/Screensaver BG.json';
+import UserLinks from '@/shared/components/HS-UserLinks/hs-user-links';
 
-import styles from "./styles.module.scss"
-import React from "react"
-import HSButton from "@/shared/components/hs-button/hs-button"
-import Accordion from "@mui/material/Accordion"
-import AccordionSummary from "@mui/material/AccordionSummary"
-import AccordionDetails from "@mui/material/AccordionDetails"
-import Typography from "@mui/material/Typography"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import DeleteIcon from "@mui/icons-material/Delete"
-import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
-import "material-icons/iconfont/material-icons.scss"
-import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
-import screensaverLottie from "@/public/lottie-files/Screensaver BG.json"
+export const metadata: Metadata = {
+  title: 'SCO - Components',
+}
 
 export default function AllComponents() {
 
@@ -149,7 +154,45 @@ export default function AllComponents() {
           </AccordionDetails>
         </Accordion>
 
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>UserLinks Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
 
+            <h3>UserLinks Component with icons</h3>
+            <UserLinks
+              displayIcons={true}
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
+            />
+            
+            <h3>UserLinks Component without Icons</h3>
+            <UserLinks
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
+            />
+            
+            <h3>UserLinks Component with Icons and overridden css</h3>
+            <UserLinks
+              displayIcons={true}
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
+              styles={{
+                'fontSize': '3em',
+                'color': 'pink'
+              }}
+            />
+
+          </AccordionDetails>
+        </Accordion>
       </div>
     </div>
   )
