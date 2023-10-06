@@ -1,13 +1,15 @@
+@use "sass:map";
+
 /* Colors: */
-$hs-white-1: #FFFFFF;
-$hs-white-2: #F9F9F9; // 
-$hs-white-3: #D8D8D8; //
+$hs-white-1: #FFF;
+$hs-white-2: #F9F9F9;
+$hs-white-3: #D8D8D8;
 $hs-orange-1: #FD4D00;
-$hs-orange-2: #DD4533; //
+$hs-orange-2: #DD4533;
 $hs-blue-1: #007DFE;
-$hs-blue-2: #15162E; //
-$hs-black-1: #231F20;  
-$hs-black-2: #000000; //
+$hs-blue-2: #15162E;
+$hs-black-1: #231F20;
+$hs-black-2: #000;
 $hs-success-color: #01B27C;
 $hs-secondary-color: #250088;
 $hs-error: #FC6A59;
@@ -82,152 +84,153 @@ $hs-line-spacing: (
 
 // The following mixin is used to create the styling for text
 // The mixin can be called with the required values for individual classnames as done in the character styles section.
-@mixin fontFeatures($family, $weight, $size, $spacing, $color) {
+@mixin font-features($family, $weight, $size, $spacing, $color) {
     font-style: $hs-font-style;
     letter-spacing: $hs-character-spacing;
-    font-family: map-get($hs-font-family, $family);
-    font-weight: map-get($hs-font-weight, $weight);
-    font-size: map-get($hs-font-size, $size);
-    line-height: map-get($hs-line-spacing, $spacing);
+    font-family: map.get($hs-font-family, $family);
+    font-weight: map.get($hs-font-weight, $weight);
+    font-size: map.get($hs-font-size, $size);
+    line-height: map.get($hs-line-spacing, $spacing);
     color: $color;
 }
 
-// The naming convention followed while decalring classNames is explained below (camelCase) 
+// The naming convention followed while decalring classNames is explained below (camelCase)
 // Syntax ->  .<font-family><font-size>W<font-weight><font-color>
 // For e.g -> .primary20W600Black
+
 /* Character Styles */
 .primary18WNormalBlack2 {
-    @include fontFeatures('primary', normal, 18, 34, $hs-black-2);
+    @include font-features('primary', normal, 18, 34, $hs-black-2);
 }
 
 .primary20WNormalBlack1 {
-    @include fontFeatures('primary', normal, 20, 36, $hs-black-1);
+    @include font-features('primary', normal, 20, 36, $hs-black-1);
 }
 
 .primary28W600White1 {
-    @include fontFeatures('primary', 600, 28, 93, $hs-white-1);
+    @include font-features('primary', 600, 28, 93, $hs-white-1);
 }
 
 .primary26W600Grey1 {
-    @include fontFeatures('primary', 600, 26, 42, $hs-grey-1);
+    @include font-features('primary', 600, 26, 42, $hs-grey-1);
 }
 
 .secondary28W600Black1 {
-    @include fontFeatures('secondary', 600, 28, 44, $hs-black-1);
+    @include font-features('secondary', 600, 28, 44, $hs-black-1);
 }
 
 .characterStyle1 {
-    @include fontFeatures('primary', normal, 32, 56, $hs-black-1);
+    @include font-features('primary', normal, 32, 56, $hs-black-1);
 }
 
 .primary24WNormalBlack1 {
-    @include fontFeatures('primary', normal, 24, 40, $hs-black-1);
+    @include font-features('primary', normal, 24, 40, $hs-black-1);
 }
 
 .primary26WNormalBlack1 {
-    @include fontFeatures('primary', normal, 26, 40, $hs-black-1);
+    @include font-features('primary', normal, 26, 40, $hs-black-1);
 }
 
 .primary26W600Black1 {
-    @include fontFeatures('primary', 600, 26, 42, $hs-black-1);
+    @include font-features('primary', 600, 26, 42, $hs-black-1);
 }
 
 .characterStyle2 {
-    @include fontFeatures('primary', normal, 48, 67, $hs-grey-1);
+    @include font-features('primary', normal, 48, 67, $hs-grey-1);
 }
 
 .secondary36WNormalBlack1 {
-    @include fontFeatures('secondary', 600, 36, 45, $hs-black-1);
+    @include font-features('secondary', 600, 36, 45, $hs-black-1);
 }
 
 .primary48W600Black1 {
-    @include fontFeatures('primary', 600, 48, 65, $hs-black-1);
+    @include font-features('primary', 600, 48, 65, $hs-black-1);
 }
 
 .primary28WNormalBlack1 {
-    @include fontFeatures('primary', normal, 28, 40, $hs-black-1);
+    @include font-features('primary', normal, 28, 40, $hs-black-1);
 }
 
 .secondary50WNormalBlue2 {
-    @include fontFeatures('secondary', normal, 50, 60, $hs-blue-2);
+    @include font-features('secondary', normal, 50, 60, $hs-blue-2);
 }
 
 .secondary58WNormalBlack1 {
-    @include fontFeatures('secondary', normal, 58, 68, $hs-black-1);
+    @include font-features('secondary', normal, 58, 68, $hs-black-1);
 }
 
 .secondary32W600White1 {
-    @include fontFeatures('secondary', 600, 32, 48, $hs-white-1);
+    @include font-features('secondary', 600, 32, 48, $hs-white-1);
 }
 
 .secondary28W600White3 {
-    @include fontFeatures('secondary', 600, 28, 44, $hs-white-3);
+    @include font-features('secondary', 600, 28, 44, $hs-white-3);
 }
 
 .primary24W600White1 {
-    @include fontFeatures('primary', 600, 24, 74, $hs-white-1);
+    @include font-features('primary', 600, 24, 74, $hs-white-1);
 }
 
 .secondary50W600Blue2 {
-    @include fontFeatures('secondary', 600, 50, 60, $hs-blue-2);
+    @include font-features('secondary', 600, 50, 60, $hs-blue-2);
 }
 
 .secondary32W600Primary {
-    @include fontFeatures('secondary', 600, 32, 48, $hs-primary-color);
+    @include font-features('secondary', 600, 32, 48, $hs-primary-color);
 }
 
 .secondary80W600Black1 {
-    @include fontFeatures('secondary', 600, 80, 93, $hs-black-1);
+    @include font-features('secondary', 600, 80, 93, $hs-black-1);
 }
 
 .primary38W600Black1 {
-    @include fontFeatures('primary', 600, 38, 52, $hs-black-1);
+    @include font-features('primary', 600, 38, 52, $hs-black-1);
 }
 
 .secondary58W600Black1 {
-    @include fontFeatures('secondary', 600, 58, 68, $hs-black-1);
+    @include font-features('secondary', 600, 58, 68, $hs-black-1);
 }
 
 .primary28W600Black1 {
-    @include fontFeatures('primary', 600, 28, 40, $hs-black-1);
+    @include font-features('primary', 600, 28, 40, $hs-black-1);
 }
 
 .secondary56W600Black1 {
-    @include fontFeatures('secondary', 600, 56, 60, $hs-black-1);
+    @include font-features('secondary', 600, 56, 60, $hs-black-1);
 }
 
 .secondary40W600Black1 {
-    @include fontFeatures('secondary', 600, 40, 52, $hs-black-1);
+    @include font-features('secondary', 600, 40, 52, $hs-black-1);
 }
 
 .characterStyle3 {
-    @include fontFeatures('primary', 600, 24, 25, $hs-white-1);
+    @include font-features('primary', 600, 24, 25, $hs-white-1);
 }
 
 .primary24W600Black1 {
-    @include fontFeatures('primary', 600, 24, 74, $hs-black-1);
+    @include font-features('primary', 600, 24, 74, $hs-black-1);
 }
 
 .primary20W600White1 {
-    @include fontFeatures('primary', 600, 20, 25, $hs-white-1);
+    @include font-features('primary', 600, 20, 25, $hs-white-1);
 }
 
 .primary20W600Black1 {
-    @include fontFeatures('primary', 600, 20, 25, $hs-black-1);
+    @include font-features('primary', 600, 20, 25, $hs-black-1);
 }
 
 .secondary68W600Black1 {
-    @include fontFeatures('secondary', 600, 68, 86, $hs-black-1);
+    @include font-features('secondary', 600, 68, 86, $hs-black-1);
 }
 
 .primary32W600Orange1 {
-    @include fontFeatures('primary', 600, 32, 45, $hs-orange-1);
+    @include font-features('primary', 600, 32, 45, $hs-orange-1);
 }
 
 .primary32W600Black1 {
-    @include fontFeatures('primary', 600, 32, 56, $hs-black-1);
+    @include font-features('primary', 600, 32, 56, $hs-black-1);
 }
 
 .secondary60W600Black1 {
-    @include fontFeatures('secondary', 600, 60, 76, $hs-black-1);
+    @include font-features('secondary', 600, 60, 76, $hs-black-1);
 }

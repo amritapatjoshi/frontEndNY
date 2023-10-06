@@ -1,22 +1,18 @@
 "use client"
-import { Metadata } from 'next'
-import styles from './styles.module.scss'
-import React from 'react';
-import HSButton from '@/shared/components/hs-button/HS-Button';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import DeleteIcon from '@mui/icons-material/Delete';
-import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-DangerousComponent';
-import 'material-icons/iconfont/material-icons.scss';
-import LottiePlayer from '@/shared/components/hs-LottiePlayer/HS-LottiePlayer';
-import screensaverLottie from '@/public/lottie-files/Screensaver BG.json';
 
-export const metadata: Metadata = {
-  title: 'SCO - Components',
-}
+import styles from "./styles.module.scss"
+import React from "react"
+import HSButton from "@/shared/components/hs-button/hs-button"
+import Accordion from "@mui/material/Accordion"
+import AccordionSummary from "@mui/material/AccordionSummary"
+import AccordionDetails from "@mui/material/AccordionDetails"
+import Typography from "@mui/material/Typography"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import DeleteIcon from "@mui/icons-material/Delete"
+import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
+import "material-icons/iconfont/material-icons.scss"
+import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
+import screensaverLottie from "@/public/lottie-files/Screensaver BG.json"
 
 export default function AllComponents() {
 
@@ -36,7 +32,7 @@ export default function AllComponents() {
           <AccordionDetails>
             <Typography>
               <HSButton variant='contained' color='primary'
-                onClick={() => console.log('test button')}>
+                onClick={() => console.log("test button")}>
                 Click!
               </HSButton>
 
@@ -92,16 +88,16 @@ export default function AllComponents() {
           <AccordionDetails>
             <div className={styles.test}>
               <p className={styles.primary18WNormalBlack2}>
-                This is a sample test to test the scss variables and mixins.
+                  This is a sample test to test the scss variables and mixins.
               </p>
               <p className={styles.secondary28W600White3}>
-                This is a sample test to test the scss variables and mixins.
+                  This is a sample test to test the scss variables and mixins.
               </p>
               <p className={styles.primary32W600Orange1}>
-                This is a sample test to test the scss variables and mixins.
+                  This is a sample test to test the scss variables and mixins.
               </p>
               <p className={styles.mixinExample}>
-                This is a sample test to test the scss variables and mixins.
+                  This is a sample test to test the scss variables and mixins.
               </p>
             </div>
           </AccordionDetails>
@@ -156,5 +152,5 @@ export default function AllComponents() {
 
       </div>
     </div>
-  );
+  )
 }
