@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './userLinks.module.scss';
+import styles from './hs-user-links.module.scss';
 import "material-icons/iconfont/material-icons.css"
 import textConfig from "../../../text-config.js";
 
