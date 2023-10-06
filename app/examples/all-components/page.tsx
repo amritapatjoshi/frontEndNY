@@ -13,7 +13,7 @@ import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-D
 import 'material-icons/iconfont/material-icons.scss';
 import LottiePlayer from '@/shared/components/hs-LottiePlayer/HS-LottiePlayer';
 import screensaverLottie from '@/public/lottie-files/Screensaver BG.json';
-import UserLinks from '@/shared/components/hs-UserLinks/hs-user-links';
+import UserLinks from '@/shared/components/HS-UserLinks/hs-user-links';
 
 export const metadata: Metadata = {
   title: 'SCO - Components',
