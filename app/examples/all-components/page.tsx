@@ -13,7 +13,7 @@ import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-D
 import 'material-icons/iconfont/material-icons.scss';
 import LottiePlayer from '@/shared/components/hs-LottiePlayer/HS-LottiePlayer';
 import screensaverLottie from '@/public/lottie-files/Screensaver BG.json';
-import MultiLinks from '@/shared/components/hs-three-links/HS-three-links';
+import UserLinks from '@/shared/components/hs-userLinks/HS-UserLinks';
 
 export const metadata: Metadata = {
   title: 'SCO - Components',
@@ -160,31 +160,31 @@ export default function AllComponents() {
             aria-controls="panel2a-content"
             id="panel2a-header"
           >
-            <Typography>Multi Links Component</Typography>
+            <Typography>UserLinks Component</Typography>
           </AccordionSummary>
           <AccordionDetails>
 
-            <h3>Multi Links Component with icons</h3>
-            <MultiLinks
+            <h3>UserLinks Component with icons</h3>
+            <UserLinks
               displayIcons={true}
-              clickEventOne={() => console.log("1st link clicked")}
-              clickEventTwo={() => console.log("2nd link clicked")}
-              clickEventThree={() => console.log("3rd link clicked")}
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
             />
             
-            <h3>Multi Links Component without Icons</h3>
-            <MultiLinks
-              clickEventOne={() => console.log("1st link clicked")}
-              clickEventTwo={() => console.log("2nd link clicked")}
-              clickEventThree={() => console.log("3rd link clicked")}
+            <h3>UserLinks Component without Icons</h3>
+            <UserLinks
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
             />
             
-            <h3>Multi Links Component with Icons and overridden css</h3>
-            <MultiLinks
+            <h3>UserLinks Component with Icons and overridden css</h3>
+            <UserLinks
               displayIcons={true}
-              clickEventOne={() => console.log("1st link clicked")}
-              clickEventTwo={() => console.log("2nd link clicked")}
-              clickEventThree={() => console.log("3rd link clicked")}
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
               styles={{
                 'fontSize': '3em',
                 'color': 'pink'
