@@ -1,15 +1,15 @@
 "use client"
 
-import { usePathname  } from "next/navigation";
+import { usePathname  } from "next/navigation"
 
 const DynamicRouting = () => {
-    const pathname = usePathname()
+  const pathname = usePathname()
     
-    return (
-        <div>
+  return (
+    <div>
             This is a Dynamic page with pathname = {pathname}
-        </div>
-    )
+    </div>
+  )
 }
 
-export default DynamicRouting;
+export default DynamicRouting

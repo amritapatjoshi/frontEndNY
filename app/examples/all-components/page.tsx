@@ -1,26 +1,28 @@
 "use client"
+import styles from "./styles.module.scss"
+import React from "react"
+import HSButton from "@/shared/components/hs-button/hs-button"
+import Accordion from "@mui/material/Accordion"
+import AccordionSummary from "@mui/material/AccordionSummary"
+import AccordionDetails from "@mui/material/AccordionDetails"
+import Typography from "@mui/material/Typography"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import DeleteIcon from "@mui/icons-material/Delete"
+import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
+import "material-icons/iconfont/material-icons.scss"
+import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
+import screensaverLottie from "@/public/lottie-files/Screensaver BG.json"
 
-import { Metadata } from 'next'
-import styles from './styles.module.scss'
-import React from 'react';
-import HSButton from '@/shared/components/hs-button/HS-Button';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import DeleteIcon from '@mui/icons-material/Delete';
- 
-export const metadata: Metadata = {
-  title: 'SCO - Components',
-}
- 
+import UserLinks from "@/shared/components/hs-user-links/hs-user-links"
+import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
+import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
+
 export default function AllComponents() {
-  
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.atoms}>
-        
+
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -29,21 +31,21 @@ export default function AllComponents() {
           >
             <Typography>Button</Typography>
           </AccordionSummary>
-          
+
           <AccordionDetails>
             <Typography>
-              <HSButton variant='contained' color='primary' 
-                onClick={() => console.log('test button')}>
-                  Click!
+              <HSButton variant='contained' color='primary'
+                onClick={() => console.log("test button")}>
+                Click!
               </HSButton>
-              
+
               <HSButton variant='outlined' startIcon={<DeleteIcon />}>
-                  Click!
-              </HSButton>              
-              
+                Click!
+              </HSButton>
+
             </Typography>
           </AccordionDetails>
-          
+
         </Accordion>
         <Accordion>
           <AccordionSummary
@@ -55,12 +57,191 @@ export default function AllComponents() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              Lottie component usage example
+              Lottie component example
+              <LottiePlayer
+                // pass the required lottie file to animationData
+                animationData={screensaverLottie}
+              />
+
             </Typography>
           </AccordionDetails>
-        </Accordion>        
-        
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Dangerous Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <HSDangerousComponent data='DANGEROUS COMPONENT' />
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>SCSS Variable Usage</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.test}>
+              <p className={styles.primary18WNormalBlack2}>
+                  This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.secondary28W600White3}>
+                  This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.primary32W600Orange1}>
+                  This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.mixinExample}>
+                  This is a sample test to test the scss variables and mixins.
+              </p>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>All Material Icons css class examples</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.icons}>
+              Filled Icon: <span className="material-icons">account_circle</span>
+              Round Icon: <span className="material-icons-round">account_circle</span>
+              Outlined Icon: <span className="material-icons-outlined">account_circle</span>
+              Sharp Icon: <span className="material-icons-sharp">account_circle</span>
+              Two-tone Icon: <span className="material-icons-two-tone">account_circle</span>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>All icons in with *-round css class.</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.icons}>
+              <span className="material-icons">search</span>
+              <span className="material-icons-round">accessibility_new</span>
+              <span className="material-icons-round">language</span>
+              <span className="material-icons-round">account_circle</span>
+              <span className="material-icons-round">help</span>
+              <span className="material-icons-round">volume_up</span>
+              <span className="material-icons-round">volume_off</span>
+              <span className="material-icons-round">volume_down</span>
+              <span className="material-icons-round">close</span>
+              <span className="material-icons-round">arrow_right_alt</span>
+              <span className="material-icons-round">backspace</span>
+              <span className="material-icons-round">credit_card</span>
+              <span className="material-icons-round">payments</span>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>UserLinks Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+
+            <h3>UserLinks Component with icons</h3>
+            <UserLinks
+              displayIcons={true}
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
+            />
+
+            <h3>UserLinks Component without Icons</h3>
+            <UserLinks
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
+            />
+
+            <h3>UserLinks Component with Icons and overridden css</h3>
+            <UserLinks
+              displayIcons={true}
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
+              styles={{
+                "fontSize": "3em",
+                "color": "pink"
+              }}
+            />
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Item Card Example</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.itemsList}>
+              {/* This is an example to showcase network image. */}
+              <ItemCard imgPath="/path/to/image" altText='Casual Shoes' height={100} width={100} name='Casual Shoes' price='$200' />
+              {/* This is an example to showcase downloaded asset image. */}
+              {/* <ItemCard imgPath="/images/pineapple.jpg" altText='A Pineapple' height={100} width={100} name='A Pineapple' price='$20' /> */}
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Tile cards</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.cards}>
+              {/* This is an example to display the tile card. */}
+              <TileCard 
+                title='Yes'
+                body='Use own bags'
+                onClick={() => console.log("Yes was cicked")} 
+              />
+              
+              {/* This is an example to display the tile card and override the css manually.*/}
+              <TileCard 
+                title='No'
+                body='Take from bagging area'
+                onClick={() => console.log("No was cicked")}
+                style={
+                  {
+                    "fontSize": "18px",
+                    "color": "pink"
+                  }
+                }
+              />
+            </div>
+          </AccordionDetails>
+        </Accordion>
       </div>
     </div>
-  );
+  )
 }

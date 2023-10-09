@@ -1,15 +1,98 @@
 {
-  "root": true,
-  "extends": ["next/core-web-vitals"],
-  "plugins": ["testing-library"],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "next",
+    "eslint:recommended"
+  ],
   "overrides": [
-    // Only uses Testing Library lint rules in test files
     {
-      "files": [
-        "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[jt]s?(x)"
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": [
+        "@typescript-eslint"
       ],
-      "extends": ["plugin:testing-library/react"]
+      "extends": [
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "variable",
+            "format": ["camelCase", "PascalCase","UPPER_CASE"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "function",
+            "format": ["camelCase", "PascalCase"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "enumMember",
+            "format": ["UPPER_CASE"]
+          },
+          {
+            "selector": "typeLike",
+            "format": ["PascalCase"]
+          },
+          {
+            "selector": "property",
+            "modifiers": ["static"],
+            "format": ["UPPER_CASE"]
+          },
+          {
+            "selector": "parameterProperty",
+            "format": ["camelCase"],
+            "leadingUnderscore": "require"
+          },
+          {
+            "selector": "typeParameter",
+            "format": ["PascalCase"],
+            "prefix": ["T"]
+          },
+          {
+            "selector": "enum",
+            "format": ["PascalCase"],
+            "custom": {
+              "regex": "^E[A-Z]",
+              "match": false
+            }
+          },
+          {
+            "selector": "interface",
+            "format": ["PascalCase"],
+            "custom": {
+              "regex": "^I[A-Z]",
+              "match": true
+            }
+          }
+        ],
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-empty-function": [
+          "error"
+        ],
+        "indent": [
+            "error",
+            2
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "never"
+        ],
+        "space-before-blocks": [
+          "error",
+          "always"
+        ],
+        "@typescript-eslint/no-unused-vars": "error"
+      }
     }
   ]
 }

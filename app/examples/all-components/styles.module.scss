@@ -1,6 +1,28 @@
+@import "../../../styles/variables";
+
 .wrapper {
     padding: 2rem;
-    background-color: beige;
+    background-color: $hs-background; // using a variable defined in the styles/variables.scss
     color: #000;
     min-height: 100vh;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+// This is a sample implementation of the mixin created in the variables.scss file.
+.mixinExample {
+    @include font-features('primary', 600, 36, 48, #99004C);
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+}
+
+.itemsList {
+    display: flex;
+    justify-content: space-evenly;
 }

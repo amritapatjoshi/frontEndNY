@@ -2,6 +2,15 @@
 
 const nextConfig = {
   reactStrictMode: true,
+  // images: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: "https",
+  //       hostname: "",
+  //       port: '',
+  //     },
+  //   ],
+  // },
 }
 
 const env = process.env.NEXT_PUBLIC_APP_ENV || 'local';
