@@ -1,0 +1,33 @@
+@import "@/styles/variables";
+
+.screensaverPopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: $hs-z-index-highest;
+
+    &.active {
+        display: flex;
+    }
+
+    .centerImage {
+        position: absolute;
+    }
+
+    @media (orientation: portrait) {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lottieAnimation {
+        width: 100%;
+        height: 100%;
+    }
+}

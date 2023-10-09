@@ -28,6 +28,9 @@ $hs-primary-color: #0F0144;
 $hs-font-style: normal;
 $hs-character-spacing: 0;
 
+// Z-index
+$hs-z-index-highest: 9999;
+
 // Creating a map for font-family
 $hs-font-family: (
     primary: 'Open Sans',
