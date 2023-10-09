@@ -15,6 +15,7 @@ import screensaverLottie from "@/public/lottie-files/Screensaver BG.json"
 
 import UserLinks from "@/shared/components/hs-user-links/hs-user-links"
 import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
+import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
 
 export default function AllComponents() {
 
@@ -204,6 +205,39 @@ export default function AllComponents() {
               <ItemCard imgPath="/path/to/image" altText='Casual Shoes' height={100} width={100} name='Casual Shoes' price='$200' />
               {/* This is an example to showcase downloaded asset image. */}
               {/* <ItemCard imgPath="/images/pineapple.jpg" altText='A Pineapple' height={100} width={100} name='A Pineapple' price='$20' /> */}
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Tile cards</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.cards}>
+              {/* This is an example to display the tile card. */}
+              <TileCard 
+                title='Yes'
+                body='Use own bags'
+                onClick={() => console.log("Yes was cicked")} 
+              />
+              
+              {/* This is an example to display the tile card and override the css manually.*/}
+              <TileCard 
+                title='No'
+                body='Take from bagging area'
+                onClick={() => console.log("No was cicked")}
+                style={
+                  {
+                    "fontSize": "18px",
+                    "color": "pink"
+                  }
+                }
+              />
             </div>
           </AccordionDetails>
         </Accordion>
