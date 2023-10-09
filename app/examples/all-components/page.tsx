@@ -138,19 +138,17 @@ export default function AllComponents() {
           </AccordionSummary>
 
           <AccordionDetails>
-            <Typography>
-              <HSButton
-                variant="contained"
-                color="primary"
-                onClick={() => console.log("test button")}
-              >
-                Click!
-              </HSButton>
+            <HSButton
+              variant="contained"
+              color="primary"
+              onClick={() => console.log("test button")}
+            >
+              Click!
+            </HSButton>
 
-              <HSButton variant="outlined" startIcon={<DeleteIcon />}>
-                Click!
-              </HSButton>
-            </Typography>
+            <HSButton variant="outlined" startIcon={<DeleteIcon />}>
+              Click!
+            </HSButton>
           </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -162,13 +160,11 @@ export default function AllComponents() {
             <Typography>Lottie</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>
-              Lottie component example
-              <LottiePlayer
-                // pass the required lottie file to animationData
-                animationData={screensaverLottie}
-              />
-            </Typography>
+            Lottie component example
+            <LottiePlayer
+              // pass the required lottie file to animationData
+              animationData={screensaverLottie}
+            />
           </AccordionDetails>
         </Accordion>
 
@@ -324,14 +320,14 @@ export default function AllComponents() {
           <AccordionDetails>
             <div className={styles.cards}>
               {/* This is an example to display the tile card. */}
-              <TileCard 
+              <TileCard
                 title='Yes'
                 body='Use own bags'
-                onClick={() => console.log("Yes was cicked")} 
+                onClick={() => console.log("Yes was cicked")}
               />
-              
+
               {/* This is an example to display the tile card and override the css manually.*/}
-              <TileCard 
+              <TileCard
                 title='No'
                 body='Take from bagging area'
                 onClick={() => console.log("No was cicked")}
@@ -494,7 +490,7 @@ export default function AllComponents() {
                 </p>
               )}
             </div>
-    
+
             <div>
               <br></br>
               <Typography>7. Date Validation</Typography>
@@ -513,7 +509,7 @@ export default function AllComponents() {
             </div>
           </AccordionDetails>
         </Accordion>
-        
+
       </div>
     </div>
   )
