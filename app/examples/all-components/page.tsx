@@ -177,7 +177,7 @@ export default function AllComponents() {
             <Typography>Dangerous Component</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <HSDangerousComponent data="DANGEROUS COMPONENT" />
+            <HSDangerousComponent data="<script>alert('This is Dangerous HTML');</script>" />
           </AccordionDetails>
         </Accordion>
 
@@ -302,7 +302,7 @@ export default function AllComponents() {
           <AccordionDetails>
             <div className={styles.itemsList}>
               {/* This is an example to showcase network image. */}
-              <ItemCard imgPath="/path/to/image" altText='Casual Shoes' height={100} width={100} name='Casual Shoes' price='$200' />
+              <ItemCard imgPath="" altText='Casual Shoes' height={100} width={100} name='Casual Shoes' price='$200' />
               {/* This is an example to showcase downloaded asset image. */}
               {/* <ItemCard imgPath="/images/pineapple.jpg" altText='A Pineapple' height={100} width={100} name='A Pineapple' price='$20' /> */}
             </div>
@@ -342,21 +342,6 @@ export default function AllComponents() {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography>List Component</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            {list.map((item, index) => {
-              return (
-                <HSItemList key={index} itemName={item.name} quantity={item.qty} price={item.price}/>)
-            })}
-          </AccordionDetails >
-        </Accordion>
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}

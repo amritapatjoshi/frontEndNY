@@ -1,5 +1,5 @@
 import React from "react"
-import DOMPurify from "isomorphic-dompurify"
+import xss from "xss"
 
 interface IProps {
     data ?: string;
@@ -8,7 +8,7 @@ interface IProps {
 export default function HSDangerousComponent(props: IProps) {
   return (
     <>       
-      <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(`${props.data}`) }} ></div>
+      <div dangerouslySetInnerHTML={{ __html: xss(`${props.data}`) }} ></div>
     </>
   )   
 }
