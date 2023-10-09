@@ -1,21 +1,19 @@
 "use client"
-import { Metadata } from 'next'
-import styles from './styles.module.scss'
-import React from 'react';
-import HSButton from '@/shared/components/hs-button/HS-Button';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import DeleteIcon from '@mui/icons-material/Delete';
-import HSDangerousComponent from '@/shared/components/hs-DangerousComponent/HS-DangerousComponent';
- 
-import 'material-icons/iconfont/material-icons.scss';
+import styles from "./styles.module.scss"
+import React from "react"
+import HSButton from "@/shared/components/hs-button/hs-button"
+import Accordion from "@mui/material/Accordion"
+import AccordionSummary from "@mui/material/AccordionSummary"
+import AccordionDetails from "@mui/material/AccordionDetails"
+import Typography from "@mui/material/Typography"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import DeleteIcon from "@mui/icons-material/Delete"
+import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
+import "material-icons/iconfont/material-icons.scss"
+import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
+import screensaverLottie from "@/public/lottie-files/Screensaver BG.json"
 
-export const metadata: Metadata = {
-  title: 'SCO - Components',
-}
+import UserLinks from "@/shared/components/hs-user-links/hs-user-links"
 
 export default function AllComponents() {
 
@@ -35,7 +33,7 @@ export default function AllComponents() {
           <AccordionDetails>
             <Typography>
               <HSButton variant='contained' color='primary'
-                onClick={() => console.log('test button')}>
+                onClick={() => console.log("test button")}>
                 Click!
               </HSButton>
 
@@ -57,11 +55,16 @@ export default function AllComponents() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              Lottie component usage example
+              Lottie component example
+              <LottiePlayer
+                // pass the required lottie file to animationData
+                animationData={screensaverLottie}
+              />
+
             </Typography>
           </AccordionDetails>
         </Accordion>
-                
+
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -70,8 +73,8 @@ export default function AllComponents() {
           >
             <Typography>Dangerous Component</Typography>
           </AccordionSummary>
-          <AccordionDetails>           
-              <HSDangerousComponent data='DANGEROUS COMPONENT' />           
+          <AccordionDetails>
+            <HSDangerousComponent data='DANGEROUS COMPONENT' />
           </AccordionDetails>
         </Accordion>
 
@@ -84,20 +87,20 @@ export default function AllComponents() {
             <Typography>SCSS Variable Usage</Typography>
           </AccordionSummary>
           <AccordionDetails>
-              <div className={styles.test}>
-                <p className={styles.primary18WNormalBlack2}>
+            <div className={styles.test}>
+              <p className={styles.primary18WNormalBlack2}>
                   This is a sample test to test the scss variables and mixins.
-                </p>
-                <p className={styles.secondary28W600White3}>
+              </p>
+              <p className={styles.secondary28W600White3}>
                   This is a sample test to test the scss variables and mixins.
-                </p>
-                <p className={styles.primary32W600Orange1}>
+              </p>
+              <p className={styles.primary32W600Orange1}>
                   This is a sample test to test the scss variables and mixins.
-                </p>
-                <p className={styles.mixinExample}>
+              </p>
+              <p className={styles.mixinExample}>
                   This is a sample test to test the scss variables and mixins.
-                </p>
-              </div>
+              </p>
+            </div>
           </AccordionDetails>
         </Accordion>
 
@@ -147,8 +150,46 @@ export default function AllComponents() {
           </AccordionDetails>
         </Accordion>
 
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>UserLinks Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
 
+            <h3>UserLinks Component with icons</h3>
+            <UserLinks
+              displayIcons={true}
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
+            />
+
+            <h3>UserLinks Component without Icons</h3>
+            <UserLinks
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
+            />
+
+            <h3>UserLinks Component with Icons and overridden css</h3>
+            <UserLinks
+              displayIcons={true}
+              accessibilityClickEvent={() => console.log("1st link clicked")}
+              languageClickEvent={() => console.log("2nd link clicked")}
+              accountClickEvent={() => console.log("3rd link clicked")}
+              styles={{
+                "fontSize": "3em",
+                "color": "pink"
+              }}
+            />
+
+          </AccordionDetails>
+        </Accordion>
       </div>
     </div>
-  );
+  )
 }
