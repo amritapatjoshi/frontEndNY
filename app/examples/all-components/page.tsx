@@ -14,6 +14,7 @@ import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
 import screensaverLottie from "@/public/lottie-files/Screensaver BG.json"
 
 import UserLinks from "@/shared/components/hs-user-links/hs-user-links"
+import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
 
 export default function AllComponents() {
 
@@ -186,7 +187,24 @@ export default function AllComponents() {
                 "color": "pink"
               }}
             />
+          </AccordionDetails>
+        </Accordion>
 
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Item Card Example</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.itemsList}>
+              {/* This is an example to showcase network image. */}
+              <ItemCard imgPath="/path/to/image" altText='Casual Shoes' height={100} width={100} name='Casual Shoes' price='$200' />
+              {/* This is an example to showcase downloaded asset image. */}
+              {/* <ItemCard imgPath="/images/pineapple.jpg" altText='A Pineapple' height={100} width={100} name='A Pineapple' price='$20' /> */}
+            </div>
           </AccordionDetails>
         </Accordion>
       </div>
