@@ -3,10 +3,10 @@ import Box from "@mui/material/Box"
 import Modal from "@mui/material/Modal"
 
 interface IProps {
-    width?: string;
-    height?: string;
-    children?: React.ReactNode;
-    handleClose?: () => void;
+    width ?: string;
+    height ?: string;
+    children ?: React.ReactNode;
+    handleClose ?: () => void;
     open : boolean;
 }
 
@@ -20,8 +20,7 @@ export default function HSModalComponent(props: IProps) {
     height: props.height || "50%",
     bgcolor: "background.paper",
     boxShadow: 24,
-    p: 4,
-    borderRadius:"2rem"
+    borderRadius:"25px"
   }
 
   return (
