@@ -1,2 +1,2 @@
 // constants.tsx
-export const SCREENSAVER_TIMEOUT = 3000
+export const SCREENSAVER_TIMEOUT = 30000

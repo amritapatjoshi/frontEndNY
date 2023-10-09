@@ -1,13 +1,12 @@
 "use client"
 import styles from "./styles.module.scss"
 import React , {useState} from "react"
-import HSButton from "@/shared/components/hs-button/HS-Button"
+import HSButton from "@/shared/components/hs-button/hs-button"
 import Accordion from "@mui/material/Accordion"
 import AccordionSummary from "@mui/material/AccordionSummary"
 import AccordionDetails from "@mui/material/AccordionDetails"
 import Typography from "@mui/material/Typography"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import DeleteIcon from "@mui/icons-material/Delete"
 import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
 import "material-icons/iconfont/material-icons.scss"
 import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
@@ -24,7 +23,7 @@ import {
   isValidStringLength,
   isValidDate,
 } from "@/shared/utils/valitation"
-import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
+// import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
 import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
 import HSItemList from "@/shared/components/hs-item-list/hs-item-list"
 
@@ -146,7 +145,7 @@ export default function AllComponents() {
               Click!
             </HSButton>
 
-            <HSButton variant="outlined" startIcon={<DeleteIcon />}>
+            <HSButton variant="outlined" startIcon={<span className="material-icons-round">help</span>}>
               Click!
             </HSButton>
           </AccordionDetails>
@@ -301,8 +300,9 @@ export default function AllComponents() {
           </AccordionSummary>
           <AccordionDetails>
             <div className={styles.itemsList}>
+              Check /examples/all-components/page.tsx for example
               {/* This is an example to showcase network image. */}
-              <ItemCard imgPath="" altText='Casual Shoes' height={100} width={100} name='Casual Shoes' price='$200' />
+              {/* <ItemCard imgPath="" altText='Casual Shoes' height={100} width={100} name='Casual Shoes' price='$200' /> */}
               {/* This is an example to showcase downloaded asset image. */}
               {/* <ItemCard imgPath="/images/pineapple.jpg" altText='A Pineapple' height={100} width={100} name='A Pineapple' price='$20' /> */}
             </div>

@@ -1,0 +1,8 @@
+@use "sass:map";
+@import "@/styles/variables";
+
+.customTheme {
+  color: $hs-primary-color;
+  border: 1px solid $hs-primary-color;
+  font-weight: map.get($hs-font-weight , 600);
+}
