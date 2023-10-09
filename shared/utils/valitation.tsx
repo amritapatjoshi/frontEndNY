@@ -1,5 +1,3 @@
-import { parse, isValid } from "date-fns"
-
 /* Function to validate the Alphabetic String */
 export function isValidAlphabeticString(value: string): boolean {
   return /^[a-zA-Z]+$/.test(value)
@@ -67,19 +65,22 @@ export function isValidNumericRange(
   return value >= min && value <= max
 }
 
-/* Function to validate the Date & Time */
-export function isValidDateTime(input: string): boolean {
-  // Customize the format according to your needs
-  const format = "yyyy-MM-dd HH:mm"
-
-  // Attempt to parse the input date time
-  const parsedDate = parse(input, format, new Date())
-
-  // Check if the parsed date is valid
-  return isValid(parsedDate)
-}
-
 /* Function to validate the Custom Regex String Provided in the Parameter */
 export function customRegexValidation(value: string, regex: RegExp): boolean {
   return regex.test(value)
+}
+
+/* Function to validate the Date & Time */
+export function isValidDate (dateString:any) {
+  // Define a regular expression for a valid date format (mm/dd/yy)
+  const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{2}$/
+
+  // Check if the date matches the regular expression
+  if (!dateRegex.test(dateString)) {
+    return false
+  }
+
+  // Check if the date is a valid date
+  const date = new Date(dateString)
+  return !isNaN(date.getTime())
 }

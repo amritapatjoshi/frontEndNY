@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import CssBaseline from "@mui/material/CssBaseline"
 import textConfig from "@/shared/config/text-config"
+import Screensaver from "@/shared/components/hs-screen-saver/hs-screen-saver"
 
 export const metadata: Metadata = {
   title: textConfig.title
@@ -11,12 +12,14 @@ export default function RootLayout({
   // This will be populated with nested layouts or pages
   children,
 }: {
-    children: React.ReactNode
-  }) {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
       <CssBaseline />
-      <body>{children}</body>
+      <body>
+        <Screensaver />
+        {children}</body>
     </html>
   )
 }

@@ -1,123 +1,127 @@
-"use client";
-import styles from "./styles.module.scss";
-import React, { useState } from "react";
-import HSButton from "@/shared/components/hs-button/hs-button";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import DeleteIcon from "@mui/icons-material/Delete";
-import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component";
-import "material-icons/iconfont/material-icons.scss";
-import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player";
-import screensaverLottie from "@/public/lottie-files/Screensaver BG.json";
+"use client"
+import styles from "./styles.module.scss"
+import React, { useState } from "react"
+import HSButton from "@/shared/components/hs-button/hs-button"
+import Accordion from "@mui/material/Accordion"
+import AccordionSummary from "@mui/material/AccordionSummary"
+import AccordionDetails from "@mui/material/AccordionDetails"
+import Typography from "@mui/material/Typography"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import DeleteIcon from "@mui/icons-material/Delete"
+import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
+import "material-icons/iconfont/material-icons.scss"
+import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
+import screensaverLottie from "@/public/lottie-files/Screensaver BG.json"
 
-import UserLinks from "@/shared/components/hs-user-links/hs-user-links";
+import UserLinks from "@/shared/components/hs-user-links/hs-user-links"
 
 import {
   customRegexValidation,
-  isValidDateTime,
   isValidAlphabeticString,
   isValidAlphanumericString,
   isValidCreditCard,
   isValidNumericRange,
   isValidStringLength,
-} from "@/shared/utils/valitation";
+  isValidDate,
+} from "@/shared/utils/valitation"
+import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
+import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
 
 export default function AllComponents() {
-  const [inputValue, setInputValue] = useState("");
-  const [isValid, setIsValid] = useState(true);
-  const [inputStringValue, setInputStringValue] = useState("");
-  const [isStringValid, setIsValidStringLength] = useState(true);
-  const [inputAlphabeticStringValue, setAlphabeticInputValue] = useState("");
-  const [isAlphabeticStringValid, setIsValidAlphabetic] = useState(true);
-  const [InputAlphanumericValue, setInputAlphanumericValue] = useState("");
+  const [inputValue, setInputValue] = useState("")
+  const [isValid, setIsValid] = useState(true)
+  const [inputStringValue, setInputStringValue] = useState("")
+  const [isStringValid, setIsValidStringLength] = useState(true)
+  const [inputAlphabeticStringValue, setAlphabeticInputValue] = useState("")
+  const [isAlphabeticStringValid, setIsValidAlphabetic] = useState(true)
+  const [InputAlphanumericValue, setInputAlphanumericValue] = useState("")
   const [isValidAlphanumericValue, setIsValidAlphanumericValue] =
-    useState(true);
-  const [regexInputValue, setRegexInputValue] = useState("");
-  const [isValidRegex, setIsValidRegex] = useState(true);
-  const [creditCardNumber, setCreditCardNumber] = useState("");
-  const [isValidCreditCardNumber, setIsValidCreditCardNumber] = useState(true);
-  const [dateTimeInputValue, setDateTimeInputValue] = useState("");
-  const [dateTimeValid, setIsDateTimeValid] = useState(true);
+    useState(true)
+  const [regexInputValue, setRegexInputValue] = useState("")
+  const [isValidRegex, setIsValidRegex] = useState(true)
+  const [creditCardNumber, setCreditCardNumber] = useState("")
+  const [isValidCreditCardNumber, setIsValidCreditCardNumber] = useState(true)
+  const [dateInputValue, setDateValue] = useState("")
+  const [dateValid, setIsDateValid] = useState(true)
 
   const handleChange = (e: any) => {
-    const value = Number(e.target.value);
+    const value = Number(e.target.value)
 
     // Define your numeric range (e.g., 1 to 100)
-    const minRange = 1;
-    const maxRange = 100;
+    const minRange = 1
+    const maxRange = 100
 
     // Check if the input falls within the numeric range
-    const isValidInput = isValidNumericRange(value, minRange, maxRange);
+    const isValidInput = isValidNumericRange(value, minRange, maxRange)
 
-    setIsValid(isValidInput);
-    setInputValue(e.target.value);
-  };
+    setIsValid(isValidInput)
+    setInputValue(e.target.value)
+  }
   const handleStringChange = (e: any) => {
-    const input = e.target.value;
+    const input = e.target.value
 
     // Define your string length range (e.g., 3 to 15)
-    const minLength = 3;
-    const maxLength = 15;
+    const minLength = 3
+    const maxLength = 15
 
     // Check if the input length falls within the specified range
-    const isValidString = isValidStringLength(input, minLength, maxLength);
+    const isValidString = isValidStringLength(input, minLength, maxLength)
 
-    setIsValidStringLength(isValidString);
-    setInputStringValue(e.target.value);
-  };
+    setIsValidStringLength(isValidString)
+    setInputStringValue(e.target.value)
+  }
   const handleAlphabeticChange = (e: any) => {
-    const stringValue = e.target.value;
+    const stringValue = e.target.value
 
     // Check if the input contains only alphabetic characters
-    const isValidAlphabetic = isValidAlphabeticString(stringValue);
-    setIsValidAlphabetic(isValidAlphabetic);
-    setAlphabeticInputValue(stringValue);
-  };
+    const isValidAlphabetic = isValidAlphabeticString(stringValue)
+    setIsValidAlphabetic(isValidAlphabetic)
+    setAlphabeticInputValue(stringValue)
+  }
 
   const handleAlphnumericChange = (e: any) => {
-    const alphanumericValue = e.target.value;
+    const alphanumericValue = e.target.value
 
     // Check if the input contains only alphabetic characters
     const isValidAlphanumericValue =
-      isValidAlphanumericString(alphanumericValue);
+      isValidAlphanumericString(alphanumericValue)
 
-    setIsValidAlphanumericValue(isValidAlphanumericValue);
-    setInputAlphanumericValue(alphanumericValue);
-  };
+    setIsValidAlphanumericValue(isValidAlphanumericValue)
+    setInputAlphanumericValue(alphanumericValue)
+  }
 
   const handleCustomValidationChange = (e: any) => {
-    const regexValue = e.target.value;
+    const regexValue = e.target.value
 
     // Define your custom regular expression
-    const customRegex = /^[a-zA-Z0-9*%]+$/;
+    const customRegex = /^[a-zA-Z0-9*%]+$/
 
     // Check if the input matches the custom regular expression
-    const isValidRegexInput = customRegexValidation(regexValue, customRegex);
+    const isValidRegexInput = customRegexValidation(regexValue, customRegex)
 
-    setIsValidRegex(isValidRegexInput);
-    setRegexInputValue(regexValue);
-  };
+    setIsValidRegex(isValidRegexInput)
+    setRegexInputValue(regexValue)
+  }
 
   const handleCreditCardValidationChange = (e: any) => {
-    const creditCardvalue = e.target.value;
+    const creditCardvalue = e.target.value
 
     // Check if the entered credit card number is valid
-    const isValidCreditCardNumber = isValidCreditCard(creditCardvalue);
+    const isValidCreditCardNumber = isValidCreditCard(creditCardvalue)
 
-    setIsValidCreditCardNumber(isValidCreditCardNumber);
-    setCreditCardNumber(creditCardvalue);
-  };
+    setIsValidCreditCardNumber(isValidCreditCardNumber)
+    setCreditCardNumber(creditCardvalue)
+  }
 
-  const handleDateTimeChange = (e: any) => {
-    const dateTimeValue = e.target.value;
-    setDateTimeInputValue(dateTimeValue);
+  const handleDateChange = (e:any) => {
+    const datevalue = e.target.value
+    setDateValue( datevalue)
 
-    // Check if the input value is a valid date time
-    setIsDateTimeValid(isValidDateTime(dateTimeValue));
-  };
+    // Validate the date format
+    const isDateValid = isValidDate( datevalue)
+    setIsDateValid(isDateValid)
+
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -215,16 +219,11 @@ export default function AllComponents() {
           </AccordionSummary>
           <AccordionDetails>
             <div className={styles.icons}>
-              Filled Icon:{" "}
-              <span className="material-icons">account_circle</span>
-              Round Icon:{" "}
-              <span className="material-icons-round">account_circle</span>
-              Outlined Icon:{" "}
-              <span className="material-icons-outlined">account_circle</span>
-              Sharp Icon:{" "}
-              <span className="material-icons-sharp">account_circle</span>
-              Two-tone Icon:{" "}
-              <span className="material-icons-two-tone">account_circle</span>
+              Filled Icon:<span className="material-icons">account_circle</span>
+              Round Icon:<span className="material-icons-round">account_circle</span>
+              Outlined Icon:<span className="material-icons-outlined">account_circle</span>
+              Sharp Icon:<span className="material-icons-sharp">account_circle</span>
+              Two-tone Icon:<span className="material-icons-two-tone">account_circle</span>
             </div>
           </AccordionDetails>
         </Accordion>
@@ -291,6 +290,57 @@ export default function AllComponents() {
                 color: "pink",
               }}
             />
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Item Card Example</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.itemsList}>
+              {/* This is an example to showcase network image. */}
+              <ItemCard imgPath="/path/to/image" altText='Casual Shoes' height={100} width={100} name='Casual Shoes' price='$200' />
+              {/* This is an example to showcase downloaded asset image. */}
+              {/* <ItemCard imgPath="/images/pineapple.jpg" altText='A Pineapple' height={100} width={100} name='A Pineapple' price='$20' /> */}
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Tile cards</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.cards}>
+              {/* This is an example to display the tile card. */}
+              <TileCard 
+                title='Yes'
+                body='Use own bags'
+                onClick={() => console.log("Yes was cicked")} 
+              />
+              
+              {/* This is an example to display the tile card and override the css manually.*/}
+              <TileCard 
+                title='No'
+                body='Take from bagging area'
+                onClick={() => console.log("No was cicked")}
+                style={
+                  {
+                    "fontSize": "18px",
+                    "color": "pink"
+                  }
+                }
+              />
+            </div>
           </AccordionDetails>
         </Accordion>
 
@@ -411,22 +461,27 @@ export default function AllComponents() {
                 </p>
               )}
             </div>
+    
             <div>
               <br></br>
-              <Typography>7. Date & Time Validation</Typography>
+              <Typography>7. Date Validation</Typography>
               <br></br>
+              <label htmlFor="dateInput">Date:</label>
               <input
-                type="text"
-                value={dateTimeInputValue}
-                onChange={handleDateTimeChange}
+                type="text"  // Use text type to allow custom date formats, adjust based on your needs
+                id="dateInput"
+                placeholder="mm/dd/yy"
+                value={dateInputValue}
+                onChange={handleDateChange}
               />
-              {dateTimeValid ? null : (
-                <div style={{ color: "red" }}>Invalid date time format</div>
+              {!dateValid && (
+                <p style={{ color: "red" }}>Please enter a valid date in the format MM/DD/YY.</p>
               )}
             </div>
           </AccordionDetails>
         </Accordion>
+        
       </div>
     </div>
-  );
+  )
 }
