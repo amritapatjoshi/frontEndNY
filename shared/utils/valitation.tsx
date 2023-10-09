@@ -73,7 +73,7 @@ export function customRegexValidation(value: string, regex: RegExp): boolean {
 /* Function to validate the Date & Time */
 export function isValidDate (dateString:any) {
   // Define a regular expression for a valid date format (mm/dd/yy)
-  const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
+  const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/
 
   // Check if the date matches the regular expression
   if (!dateRegex.test(dateString)) {
