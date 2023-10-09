@@ -17,6 +17,11 @@
     @include font-features('primary', 600, 36, 48, #99004C);
 }
 
+.cards {
+    display: flex;
+    flex-direction: row;
+}
+
 .itemsList {
     display: flex;
     justify-content: space-evenly;
