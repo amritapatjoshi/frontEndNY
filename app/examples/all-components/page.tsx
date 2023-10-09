@@ -441,7 +441,7 @@ export default function AllComponents() {
               <label htmlFor="alphabeticInput">Input:</label>
               <input
                 type="text"
-                id="alphabeticInput"
+                id="alphanumericInput"
                 value={InputAlphanumericValue}
                 onChange={handleAlphnumericChange}
               />
@@ -499,12 +499,12 @@ export default function AllComponents() {
               <input
                 type="text"  // Use text type to allow custom date formats, adjust based on your needs
                 id="dateInput"
-                placeholder="mm/dd/yy"
+                placeholder="mm/dd/yyyy"
                 value={dateInputValue}
                 onChange={handleDateChange}
               />
               {!dateValid && (
-                <p style={{ color: "red" }}>Please enter a valid date in the format MM/DD/YY.</p>
+                <p style={{ color: "red" }}>Please enter a valid date in the format MM/DD/YYYY.</p>
               )}
             </div>
           </AccordionDetails>
