@@ -445,7 +445,7 @@ export default function AllComponents() {
               <label htmlFor="alphabeticInput">Input:</label>
               <input
                 type="text"
-                id="alphabeticInput"
+                id="alphanumericInput"
                 value={InputAlphanumericValue}
                 onChange={handleAlphnumericChange}
               />
