@@ -16,3 +16,8 @@
 .mixinExample {
     @include font-features('primary', 600, 36, 48, #99004C);
 }
+
+.itemsList {
+    display: flex;
+    justify-content: space-evenly;
+}
