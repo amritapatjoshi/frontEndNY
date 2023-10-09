@@ -1,0 +1,26 @@
+@import "@/styles/variables";
+
+.listBorder{
+    border-bottom: 1px solid $hs-dark-grey;
+    position: absolute;
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+.listContainer{
+    background-color: $hs-background;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    font-size: 1em;
+    color: $hs-black-1;
+    
+    .name{   
+        flex: 3;
+    }
+
+    .listData{
+        flex: 1;
+    }
+
+}

@@ -1,7 +1,7 @@
 "use client"
 import styles from "./styles.module.scss"
-import React from "react"
-import HSButton from "@/shared/components/hs-button/hs-button"
+import React , {useState} from "react"
+import HSButton from "@/shared/components/hs-button/HS-Button"
 import Accordion from "@mui/material/Accordion"
 import AccordionSummary from "@mui/material/AccordionSummary"
 import AccordionDetails from "@mui/material/AccordionDetails"
@@ -16,8 +16,11 @@ import screensaverLottie from "@/public/lottie-files/Screensaver BG.json"
 import UserLinks from "@/shared/components/hs-user-links/hs-user-links"
 import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
 import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
+import HSItemList from "@/shared/components/hs-item-list/hs-item-list"
 
 export default function AllComponents() {
+
+  const [list] = useState([{ name: "Organic Tomato", qty: 1, price: "$2" }, { name: "Mix Vegetable Pickle Organic Pickle Homemade.", qty: 1, price: "$2" }])
 
   return (
     <div className={styles.wrapper}>
@@ -240,6 +243,37 @@ export default function AllComponents() {
               />
             </div>
           </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>List Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            {list.map((item, index) => {
+              return (
+                <HSItemList key={index} itemName={item.name} quantity={item.qty} price={item.price}/>)
+            })}
+          </AccordionDetails >
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>List Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            {list.map((item, index) => {
+              return (
+                <HSItemList key={index} itemName={item.name} quantity={item.qty} price={item.price}/>)
+            })}
+          </AccordionDetails >
         </Accordion>
       </div>
     </div>
