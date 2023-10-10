@@ -1,7 +1,7 @@
 "use client"
 import styles from "./styles.module.scss"
 import React , {useState} from "react"
-import HSButton from "@/shared/components/hs-button/hs-button"
+import HSButton from "@/shared/components/hs-button/hs-btn"
 import Accordion from "@mui/material/Accordion"
 import AccordionSummary from "@mui/material/AccordionSummary"
 import AccordionDetails from "@mui/material/AccordionDetails"
