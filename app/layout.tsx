@@ -20,7 +20,8 @@ export default function RootLayout({
       <CssBaseline />
       <body>
         <Screensaver />
-        {children}</body>
+        {children}
+      </body>
     </html>
   )
 }

@@ -6,45 +6,9 @@ exports[`renders UseEnv page unchanged 1`] = `
     class="wrapper"
   >
     <h1>
-      This page shows an example of using environment variable: 
-      http://localhost:8080
+      Value from environment variable: 
+      https://test-local.com
     </h1>
   </div>
-</div>
-`;
-
-exports[`renders homepage unchanged 1`] = `
-<div>
-  <main
-    class="main className"
-  >
-    <div
-      class="description"
-    >
-      <p>
-        Get started by editing 
-        <code
-          class="code"
-        >
-          pages/index.tsx
-        </code>
-      </p>
-    </div>
-    <div
-      class="center"
-    >
-      <img
-        alt="Next.js Logo"
-        class="logo"
-        data-nimg="1"
-        decoding="async"
-        fetchpriority="high"
-        height="37"
-        src="images/next.svg"
-        style="color: transparent;"
-        width="180"
-      />
-    </div>
-  </main>
 </div>
 `;
