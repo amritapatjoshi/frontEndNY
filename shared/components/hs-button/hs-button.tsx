@@ -1,25 +1,29 @@
 import * as React from "react"
 import Button, { ButtonProps } from "@mui/material/Button"
 import { styled } from "@mui/material/styles"
+import styles from "./hs-button.module.scss"
 
 interface IButtonProps extends ButtonProps {
-    // Add any custom prop components
+    // Add custom prop components
 }
 
-const StyledButton = styled(Button) ({
+const CustomButton = styled(Button) ({
   borderRadius: "46px",
   height: "79px",
   letterSpacing: 0,
   fontSize: "32px",
-  fontWeight: 600
+  fontWeight: 600,
+  padding: "0 40px",
+  textAlign: "left",
+  lineHeight: "1.5",
 })
 
 export default function HSButton({ children, ...props }: IButtonProps) {
   return (
     <>
-      <StyledButton {...props}>
+      <CustomButton size="large" className={styles.customTheme} {...props}>
         {children}
-      </StyledButton>
+      </CustomButton>
     </>
   )
 }
