@@ -19,10 +19,10 @@ import {
   customRegexValidation,
   isValidAlphabeticString,
   isValidAlphanumericString,
-  isValidCreditCard,
   isValidNumericRange,
   isValidStringLength,
-  isValidDate,
+  isCreditCardValid,
+  isValidDate
 } from "@/shared/utils/valitation"
 import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
 import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
@@ -45,9 +45,10 @@ export default function AllComponents() {
   const [isValidCreditCardNumber, setIsValidCreditCardNumber] = useState(true)
   const [dateInputValue, setDateValue] = useState("")
   const [dateValid, setIsDateValid] = useState(true)
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleChange = (e: any) => {
-    const value = Number(e.target.value)
+    const value = (e.target.value)
 
     // Define your numeric range (e.g., 1 to 100)
     const minRange = 1
@@ -106,22 +107,35 @@ export default function AllComponents() {
   }
 
   const handleCreditCardValidationChange = (e: any) => {
-    const creditCardvalue = e.target.value
+    const newCreditCardNumber = e.target.value
+    setCreditCardNumber(newCreditCardNumber)
 
     // Check if the entered credit card number is valid
-    const isValidCreditCardNumber = isValidCreditCard(creditCardvalue)
-
-    setIsValidCreditCardNumber(isValidCreditCardNumber)
-    setCreditCardNumber(creditCardvalue)
+    const isValidCreditCard = isCreditCardValid(newCreditCardNumber)
+    setIsValidCreditCardNumber(isValidCreditCard)
   }
 
   const handleDateChange = (e:any) => {
-    const datevalue = e.target.value
-    setDateValue( datevalue)
+    const newDate = e.target.value
+    setDateValue(newDate)
+    const expectedFormats = ['MM/DD/YYYY', 'YYYY-MM-DD', 'DD/MM/YYYY', 'MM-DD-YYYY'];
 
-    // Validate the date format
-    const isDateValid = isValidDate( datevalue)
-    setIsDateValid(isDateValid)
+    // Check if the entered date is in 'MM/DD/YYYY', 'YYYY-MM-DD', 'DD/MM/YYYY', 'MM-DD-YYYY' format
+    const isValidFormat = expectedFormats.some((format) => isValidDate(newDate, format));
+    
+    // Check if the entered date is not in the future
+    const isFutureDate = new Date(newDate) > new Date()
+
+    setIsDateValid(isValidFormat && !isFutureDate)
+
+    // Display error message for invalid format or future dates
+    setErrorMessage(
+      !isValidFormat
+        ? "Please enter a valid date in 'MM/DD/YYYY', 'YYYY-MM-DD', 'DD/MM/YYYY' format"
+        : isFutureDate
+          ? "Please enter a date not in the future"
+          : ""
+    )
 
   }
 
@@ -483,18 +497,13 @@ export default function AllComponents() {
               <label htmlFor="creditCardInput">Credit Card Number:</label>
               <input
                 type="text"
-                id="creditCardInput"
                 value={creditCardNumber}
                 onChange={handleCreditCardValidationChange}
+                placeholder="Enter credit card number"
               />
-
-              {!isValidCreditCardNumber && (
-                <p style={{ color: "red" }}>
-                  Please enter a valid credit card number.
-                </p>
-              )}
+              {!isValidCreditCardNumber && <p style={{ color: "red" }}>Invalid credit card number</p>}
             </div>
-    
+          
             <div>
               <br></br>
               <Typography>7. Date Validation</Typography>
@@ -508,7 +517,7 @@ export default function AllComponents() {
                 onChange={handleDateChange}
               />
               {!dateValid && (
-                <p style={{ color: "red" }}>Please enter a valid date in the format MM/DD/YYYY.</p>
+                <p style={{ color: "red" }}>{errorMessage}</p>
               )}
             </div>
           </AccordionDetails>
