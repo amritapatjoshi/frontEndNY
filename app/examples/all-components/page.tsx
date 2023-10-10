@@ -26,6 +26,7 @@ import {
 // import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
 import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
 import HSItemList from "@/shared/components/hs-item-list/hs-item-list"
+import HSModalComponent from "@/shared/components/hs-modal/hs-modal"
 
 export default function AllComponents() {
   const [list] = useState([{ name: "Organic Tomato", qty: 1, price: "$2" }, { name: "Mix Vegetable Pickle Organic Pickle Homemade.", qty: 1, price: "$2" }])
@@ -44,6 +45,7 @@ export default function AllComponents() {
   const [isValidCreditCardNumber, setIsValidCreditCardNumber] = useState(true)
   const [dateInputValue, setDateValue] = useState("")
   const [dateValid, setIsDateValid] = useState(true)
+  const [open, setOpen] = useState(false)
 
   const handleChange = (e: any) => {
     const value = Number(e.target.value)
@@ -492,6 +494,36 @@ export default function AllComponents() {
                 <p style={{ color: "red" }}>Please enter a valid date in the format MM/DD/YYYY.</p>
               )}
             </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>Modal Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <button type="button"
+              onClick={()=>setOpen(true)}>
+              Click to Open Modal
+            </button>
+            <HSModalComponent width="70%" height="70%" open={open} handleClose={()=>setOpen(false)}>            
+              <div className={styles.modalHeader}>
+                Hello Hyosung
+              </div>
+              <div className={styles.modalContainer} >
+                <HSButton variant='outlined' startIcon={<DeleteIcon />}>
+                  Click!
+                </HSButton>
+                <HSButton variant='contained' color='primary'
+                  onClick={() => console.log("test button")}>
+                  Click!
+                </HSButton>
+              </div>
+            </HSModalComponent>
           </AccordionDetails>
         </Accordion>
 
