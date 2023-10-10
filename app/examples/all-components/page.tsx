@@ -1,7 +1,7 @@
 "use client"
 import styles from "./styles.module.scss"
 import React , {useState} from "react"
-import HSButton from "@/shared/components/hs-button/hs-btn"
+import HSButton from "@/shared/components/hs-button/hs-button"
 import Accordion from "@mui/material/Accordion"
 import AccordionSummary from "@mui/material/AccordionSummary"
 import AccordionDetails from "@mui/material/AccordionDetails"
@@ -510,12 +510,12 @@ export default function AllComponents() {
               onClick={()=>setOpen(true)}>
               Click to Open Modal
             </button>
-            <HSModalComponent width="70%" height="70%" open={open} handleClose={()=>setOpen(false)}>            
+            <HSModalComponent width="70%" height="70%" open={open} handleClose={()=>setOpen(false)}>
               <div className={styles.modalHeader}>
                 Hello Hyosung
               </div>
               <div className={styles.modalContainer} >
-                <HSButton variant='outlined' startIcon={<DeleteIcon />}>
+                <HSButton variant="outlined" startIcon={<span className="material-icons-round">help</span>}>
                   Click!
                 </HSButton>
                 <HSButton variant='contained' color='primary'
