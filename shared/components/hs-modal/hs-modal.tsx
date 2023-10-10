@@ -3,11 +3,11 @@ import Box from "@mui/material/Box"
 import Modal from "@mui/material/Modal"
 
 interface IProps {
-    width ?: string;
-    height ?: string;
-    children ?: React.ReactNode;
-    handleClose ?: () => void;
-    open : boolean;
+    width?: string;
+    height?: string;
+    children?: React.ReactNode;
+    handleClose?: () => void;
+    open: boolean;
 }
 
 export default function HSModalComponent(props: IProps) {
@@ -27,8 +27,6 @@ export default function HSModalComponent(props: IProps) {
     <>
       <Modal open={props.open ? true:false }
         onClose={props.handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           {props.children}
