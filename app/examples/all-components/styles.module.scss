@@ -1,40 +1,52 @@
 @import "../../../styles/variables";
 
 .wrapper {
-    padding: 2rem;
-    background-color: $hs-background; // using a variable defined in the styles/variables.scss
-    color: #000;
-    min-height: 100vh;
+  padding: 2rem;
+  background-color: $hs-background; // using a variable defined in the styles/variables.scss
+  color: #000;
+  min-height: 100vh;
+
+  .accordion {
+    padding: 0 0 2rem;
+
+    .width50 {
+      width: 50%;
+    }
+
+    .width30 {
+      width: 30%;
+    }
+  }
 }
 
 .icons {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 // This is a sample implementation of the mixin created in the variables.scss file.
 .mixinExample {
-    @include font-features('primary', 600, 36, 48, #99004C);
+  @include font-features('primary', 600, 36, 48, #99004C);
 }
 
 .cards {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .itemsList {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .modalContainer{
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .modalHeader{
-    text-align: center;
-    margin-bottom: 1em;
-    font-size: 3em;
-    padding-top: 2em;
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 3em;
+  padding-top: 2em;
 }

@@ -1,18 +1,23 @@
 "use client"
 import styles from "./styles.module.scss"
 import React , {useState} from "react"
-import HSButton from "@/shared/components/hs-button/hs-btn"
+import "material-icons/iconfont/material-icons.scss"
+import bagItemLottie from "@/public/lottie-files/Bag Item.json"
+
 import Accordion from "@mui/material/Accordion"
 import AccordionSummary from "@mui/material/AccordionSummary"
 import AccordionDetails from "@mui/material/AccordionDetails"
 import Typography from "@mui/material/Typography"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
-import "material-icons/iconfont/material-icons.scss"
-import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
-import screensaverLottie from "@/public/lottie-files/Screensaver BG.json"
 
+import HSButton from "@/shared/components/hs-button/hs-button"
+import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
 import UserLinks from "@/shared/components/hs-user-links/hs-user-links"
+import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
+import HSItemList from "@/shared/components/hs-item-list/hs-item-list"
+import HSModalComponent from "@/shared/components/hs-modal/hs-modal"
+import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
+// import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
 
 import {
   customRegexValidation,
@@ -23,12 +28,9 @@ import {
   isValidStringLength,
   isValidDate,
 } from "@/shared/utils/valitation"
-// import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
-import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
-import HSItemList from "@/shared/components/hs-item-list/hs-item-list"
-import HSModalComponent from "@/shared/components/hs-modal/hs-modal"
 
 export default function AllComponents() {
+
   const [list] = useState([{ name: "Organic Tomato", qty: 1, price: "$2" }, { name: "Mix Vegetable Pickle Organic Pickle Homemade.", qty: 1, price: "$2" }])
   const [inputValue, setInputValue] = useState("")
   const [isValid, setIsValid] = useState(true)
@@ -60,6 +62,7 @@ export default function AllComponents() {
     setIsValid(isValidInput)
     setInputValue(e.target.value)
   }
+
   const handleStringChange = (e: any) => {
     const input = e.target.value
 
@@ -73,6 +76,7 @@ export default function AllComponents() {
     setIsValidStringLength(isValidString)
     setInputStringValue(e.target.value)
   }
+
   const handleAlphabeticChange = (e: any) => {
     const stringValue = e.target.value
 
@@ -128,7 +132,7 @@ export default function AllComponents() {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.atoms}>
+      <div className={styles.accordion}>
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -152,6 +156,7 @@ export default function AllComponents() {
             </HSButton>
           </AccordionDetails>
         </Accordion>
+
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -161,11 +166,22 @@ export default function AllComponents() {
             <Typography>Lottie</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            Lottie component example
-            <LottiePlayer
-              // pass the required lottie file to animationData
-              animationData={screensaverLottie}
-            />
+            <Typography>Lottie without Animation</Typography>
+            <div className={styles.width50}>
+              <LottiePlayer
+                // pass the required lottie file to animationData
+                animationData={bagItemLottie}
+              />
+            </div>
+            <Typography>Lottie with Animation</Typography>
+            <div className={styles.width30}>
+              <LottiePlayer
+                // pass the required lottie file to animationData
+                animationData={bagItemLottie}
+                loop
+                play
+              />
+            </div>
           </AccordionDetails>
         </Accordion>
 
@@ -179,78 +195,6 @@ export default function AllComponents() {
           </AccordionSummary>
           <AccordionDetails>
             <HSDangerousComponent data="<script>alert('This is Dangerous HTML');</script>" />
-          </AccordionDetails>
-        </Accordion>
-
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography>SCSS Variable Usage</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <div className={styles.test}>
-              <p className={styles.primary18WNormalBlack2}>
-                This is a sample test to test the scss variables and mixins.
-              </p>
-              <p className={styles.secondary28W600White3}>
-                This is a sample test to test the scss variables and mixins.
-              </p>
-              <p className={styles.primary32W600Orange1}>
-                This is a sample test to test the scss variables and mixins.
-              </p>
-              <p className={styles.mixinExample}>
-                This is a sample test to test the scss variables and mixins.
-              </p>
-            </div>
-          </AccordionDetails>
-        </Accordion>
-
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography>All Material Icons css class examples</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <div className={styles.icons}>
-              Filled Icon:<span className="material-icons">account_circle</span>
-              Round Icon:<span className="material-icons-round">account_circle</span>
-              Outlined Icon:<span className="material-icons-outlined">account_circle</span>
-              Sharp Icon:<span className="material-icons-sharp">account_circle</span>
-              Two-tone Icon:<span className="material-icons-two-tone">account_circle</span>
-            </div>
-          </AccordionDetails>
-        </Accordion>
-
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography>All icons in with *-round css class.</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <div className={styles.icons}>
-              <span className="material-icons">search</span>
-              <span className="material-icons-round">accessibility_new</span>
-              <span className="material-icons-round">language</span>
-              <span className="material-icons-round">account_circle</span>
-              <span className="material-icons-round">help</span>
-              <span className="material-icons-round">volume_up</span>
-              <span className="material-icons-round">volume_off</span>
-              <span className="material-icons-round">volume_down</span>
-              <span className="material-icons-round">close</span>
-              <span className="material-icons-round">arrow_right_alt</span>
-              <span className="material-icons-round">backspace</span>
-              <span className="material-icons-round">credit_card</span>
-              <span className="material-icons-round">payments</span>
-            </div>
           </AccordionDetails>
         </Accordion>
 
@@ -366,6 +310,112 @@ export default function AllComponents() {
             aria-controls="panel2a-content"
             id="panel2a-header"
           >
+            <Typography>Modal Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <button type="button"
+              onClick={()=>setOpen(true)}>
+              Click to Open Modal
+            </button>
+            <HSModalComponent width="70%" height="70%" open={open} handleClose={()=>setOpen(false)}>
+              <div className={styles.modalHeader}>
+                Hello Hyosung
+              </div>
+              <div className={styles.modalContainer} >
+                <HSButton variant="outlined" startIcon={<span className="material-icons-round">help</span>}>
+                  Click!
+                </HSButton>
+                <HSButton variant='contained' color='primary'
+                  onClick={() => console.log("test button")}>
+                  Click!
+                </HSButton>
+              </div>
+            </HSModalComponent>
+          </AccordionDetails>
+        </Accordion>
+      </div>
+
+      <div className={styles.accordion}>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>SCSS Variable Usage</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.test}>
+              <p className={styles.primary18WNormalBlack2}>
+              This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.secondary28W600White3}>
+              This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.primary32W600Orange1}>
+              This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.mixinExample}>
+              This is a sample test to test the scss variables and mixins.
+              </p>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>All Material Icons css class examples</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.icons}>
+            Filled Icon:<span className="material-icons">account_circle</span>
+            Round Icon:<span className="material-icons-round">account_circle</span>
+            Outlined Icon:<span className="material-icons-outlined">account_circle</span>
+            Sharp Icon:<span className="material-icons-sharp">account_circle</span>
+            Two-tone Icon:<span className="material-icons-two-tone">account_circle</span>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>All icons in with *-round css class.</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.icons}>
+              <span className="material-icons">search</span>
+              <span className="material-icons-round">accessibility_new</span>
+              <span className="material-icons-round">language</span>
+              <span className="material-icons-round">account_circle</span>
+              <span className="material-icons-round">help</span>
+              <span className="material-icons-round">volume_up</span>
+              <span className="material-icons-round">volume_off</span>
+              <span className="material-icons-round">volume_down</span>
+              <span className="material-icons-round">close</span>
+              <span className="material-icons-round">arrow_right_alt</span>
+              <span className="material-icons-round">backspace</span>
+              <span className="material-icons-round">credit_card</span>
+              <span className="material-icons-round">payments</span>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
             <Typography>Validation</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -381,7 +431,7 @@ export default function AllComponents() {
               />
               {!isValid && (
                 <p style={{ color: "red" }}>
-                  Please enter a number between 1 and 100.
+                Please enter a number between 1 and 100.
                 </p>
               )}
             </div>
@@ -399,8 +449,8 @@ export default function AllComponents() {
 
               {!isStringValid && (
                 <p style={{ color: "red" }}>
-                  Please enter a string with a length between 3 and 15
-                  characters.
+                Please enter a string with a length between 3 and 15
+                characters.
                 </p>
               )}
             </div>
@@ -417,7 +467,7 @@ export default function AllComponents() {
               />
               {!isAlphabeticStringValid && (
                 <p style={{ color: "red" }}>
-                  Please enter a string with only alphabetic characters.
+                Please enter a string with only alphabetic characters.
                 </p>
               )}
             </div>
@@ -434,7 +484,7 @@ export default function AllComponents() {
               />
               {!isValidAlphanumericValue && (
                 <p style={{ color: "red" }}>
-                  Please enter a string with only alphanumeric characters.
+                Please enter a string with only alphanumeric characters.
                 </p>
               )}
             </div>
@@ -443,7 +493,7 @@ export default function AllComponents() {
               <Typography>5. Custom Regex Validation</Typography>
               <br></br>
               <label htmlFor="customValidationInput">
-                Custom Validation Input:
+              Custom Validation Input:
               </label>
               <input
                 type="text"
@@ -454,8 +504,8 @@ export default function AllComponents() {
 
               {!isValidRegex && (
                 <p style={{ color: "red" }}>
-                  Please enter a string with only alphanumeric
-                  characters(custom).
+                Please enter a string with only alphanumeric
+                characters(custom).
                 </p>
               )}
             </div>
@@ -473,7 +523,7 @@ export default function AllComponents() {
 
               {!isValidCreditCardNumber && (
                 <p style={{ color: "red" }}>
-                  Please enter a valid credit card number.
+                Please enter a valid credit card number.
                 </p>
               )}
             </div>
@@ -496,37 +546,6 @@ export default function AllComponents() {
             </div>
           </AccordionDetails>
         </Accordion>
-
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography>Modal Component</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <button type="button"
-              onClick={()=>setOpen(true)}>
-              Click to Open Modal
-            </button>
-            <HSModalComponent width="70%" height="70%" open={open} handleClose={()=>setOpen(false)}>            
-              <div className={styles.modalHeader}>
-                Hello Hyosung
-              </div>
-              <div className={styles.modalContainer} >
-                <HSButton variant='outlined' startIcon={<DeleteIcon />}>
-                  Click!
-                </HSButton>
-                <HSButton variant='contained' color='primary'
-                  onClick={() => console.log("test button")}>
-                  Click!
-                </HSButton>
-              </div>
-            </HSModalComponent>
-          </AccordionDetails>
-        </Accordion>
-
       </div>
     </div>
   )
