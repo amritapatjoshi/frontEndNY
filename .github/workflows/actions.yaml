@@ -28,7 +28,7 @@ jobs:
       run: |
         wget https://github.com/zricethezav/gitleaks/releases/download/v7.6.0/gitleaks-linux-amd64 -O gitleaks
         chmod +x gitleaks
-        ./gitleaks --repo-path=. --report=gitleaks-report.json
+        gitleaks -o gitleaks-report.json
       env:
         GITHUB_TOKEN: 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  
 
