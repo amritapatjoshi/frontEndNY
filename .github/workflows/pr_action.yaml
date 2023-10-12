@@ -18,12 +18,18 @@ jobs:
       with:
         node-version: 20
 
-    - name: Install dependencies
+    - name: Install npm dependencies
       run: npm install
 
     - name: Build Next JS App
       run: npm run build 
 
+    - name: Run GitLeaks Scan
+      run: |
+        wget https://github.com/zricethezav/gitleaks/releases/download/v7.6.0/gitleaks-linux-amd64
+        chmod +x gitleaks-linux-amd64
+        ./gitleaks-linux-amd64 -o gitleaks-report.json
+
     # - name: Run Tests
     #   run: npm test 
-
+    
