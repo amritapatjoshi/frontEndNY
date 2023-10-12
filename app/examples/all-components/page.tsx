@@ -63,6 +63,7 @@ export default function AllComponents() {
     setIsValid(isValidInput)
     setInputValue(e.target.value)
   }
+
   const handleStringChange = (e: any) => {
     const input = e.target.value
 
@@ -76,6 +77,7 @@ export default function AllComponents() {
     setIsValidStringLength(isValidString)
     setInputStringValue(e.target.value)
   }
+
   const handleAlphabeticChange = (e: any) => {
     const stringValue = e.target.value
 
