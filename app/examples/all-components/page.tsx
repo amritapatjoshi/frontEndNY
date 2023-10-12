@@ -1,34 +1,36 @@
 "use client"
 import styles from "./styles.module.scss"
 import React , {useState} from "react"
-import HSButton from "@/shared/components/hs-button/HS-Button"
+import "material-icons/iconfont/material-icons.scss"
+import bagItemLottie from "@/public/lottie-files/Bag Item.json"
+
 import Accordion from "@mui/material/Accordion"
 import AccordionSummary from "@mui/material/AccordionSummary"
 import AccordionDetails from "@mui/material/AccordionDetails"
 import Typography from "@mui/material/Typography"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
-import DeleteIcon from "@mui/icons-material/Delete"
-import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
-import "material-icons/iconfont/material-icons.scss"
-import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
-import screensaverLottie from "@/public/lottie-files/Screensaver BG.json"
 
+import HSButton from "@/shared/components/hs-button/hs-button"
+import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
 import UserLinks from "@/shared/components/hs-user-links/hs-user-links"
+import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
+import HSItemList from "@/shared/components/hs-item-list/hs-item-list"
+import HSModalComponent from "@/shared/components/hs-modal/hs-modal"
+import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
+// import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
 
 import {
   customRegexValidation,
   isValidAlphabeticString,
   isValidAlphanumericString,
-  isValidCreditCard,
   isValidNumericRange,
   isValidStringLength,
-  isValidDate,
+  isCreditCardValid,
+  isValidDate
 } from "@/shared/utils/valitation"
-import ItemCard from "@/shared/components/hs-item-card/hs-item-card"
-import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
-import HSItemList from "@/shared/components/hs-item-list/hs-item-list"
 
 export default function AllComponents() {
+
   const [list] = useState([{ name: "Organic Tomato", qty: 1, price: "$2" }, { name: "Mix Vegetable Pickle Organic Pickle Homemade.", qty: 1, price: "$2" }])
   const [inputValue, setInputValue] = useState("")
   const [isValid, setIsValid] = useState(true)
@@ -45,9 +47,11 @@ export default function AllComponents() {
   const [isValidCreditCardNumber, setIsValidCreditCardNumber] = useState(true)
   const [dateInputValue, setDateValue] = useState("")
   const [dateValid, setIsDateValid] = useState(true)
+  const [errorMessage, setErrorMessage] = useState("")
+  const [open, setOpen] = useState(false)
 
   const handleChange = (e: any) => {
-    const value = Number(e.target.value)
+    const value = (e.target.value)
 
     // Define your numeric range (e.g., 1 to 100)
     const minRange = 1
@@ -106,28 +110,41 @@ export default function AllComponents() {
   }
 
   const handleCreditCardValidationChange = (e: any) => {
-    const creditCardvalue = e.target.value
+    const newCreditCardNumber = e.target.value
+    setCreditCardNumber(newCreditCardNumber)
 
     // Check if the entered credit card number is valid
-    const isValidCreditCardNumber = isValidCreditCard(creditCardvalue)
-
-    setIsValidCreditCardNumber(isValidCreditCardNumber)
-    setCreditCardNumber(creditCardvalue)
+    const isValidCreditCard = isCreditCardValid(newCreditCardNumber)
+    setIsValidCreditCardNumber(isValidCreditCard)
   }
 
   const handleDateChange = (e:any) => {
-    const datevalue = e.target.value
-    setDateValue( datevalue)
+    const newDate = e.target.value
+    setDateValue(newDate)
+    const expectedFormats = ["MM/DD/YYYY", "MM-DD-YYYY"]
 
-    // Validate the date format
-    const isDateValid = isValidDate( datevalue)
-    setIsDateValid(isDateValid)
+    // Check if the entered date is in 'MM/DD/YYYY','MM-DD-YYYY' format
+    const isValidFormat = expectedFormats.some((format) => isValidDate(newDate, format))
+    
+    // Check if the entered date is not in the future
+    const isFutureDate = new Date(newDate) > new Date()
+
+    setIsDateValid(isValidFormat && !isFutureDate)
+
+    // Display error message for invalid format or future dates
+    setErrorMessage(
+      !isValidFormat
+        ? "Please enter a valid date in 'MM/DD/YYYY', 'MM-DD-YYYY' format"
+        : isFutureDate
+          ? "Please enter a date not in the future"
+          : ""
+    )
 
   }
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.atoms}>
+      <div className={styles.accordion}>
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -146,11 +163,12 @@ export default function AllComponents() {
               Click!
             </HSButton>
 
-            <HSButton variant="outlined" startIcon={<DeleteIcon />}>
+            <HSButton variant="outlined" startIcon={<span className="material-icons-round">help</span>}>
               Click!
             </HSButton>
           </AccordionDetails>
         </Accordion>
+
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -160,11 +178,22 @@ export default function AllComponents() {
             <Typography>Lottie</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            Lottie component example
-            <LottiePlayer
-              // pass the required lottie file to animationData
-              animationData={screensaverLottie}
-            />
+            <Typography>Lottie without Animation</Typography>
+            <div className={styles.width50}>
+              <LottiePlayer
+                // pass the required lottie file to animationData
+                animationData={bagItemLottie}
+              />
+            </div>
+            <Typography>Lottie with Animation</Typography>
+            <div className={styles.width30}>
+              <LottiePlayer
+                // pass the required lottie file to animationData
+                animationData={bagItemLottie}
+                loop
+                play
+              />
+            </div>
           </AccordionDetails>
         </Accordion>
 
@@ -178,78 +207,6 @@ export default function AllComponents() {
           </AccordionSummary>
           <AccordionDetails>
             <HSDangerousComponent data="<script>alert('This is Dangerous HTML');</script>" />
-          </AccordionDetails>
-        </Accordion>
-
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography>SCSS Variable Usage</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <div className={styles.test}>
-              <p className={styles.primary18WNormalBlack2}>
-                This is a sample test to test the scss variables and mixins.
-              </p>
-              <p className={styles.secondary28W600White3}>
-                This is a sample test to test the scss variables and mixins.
-              </p>
-              <p className={styles.primary32W600Orange1}>
-                This is a sample test to test the scss variables and mixins.
-              </p>
-              <p className={styles.mixinExample}>
-                This is a sample test to test the scss variables and mixins.
-              </p>
-            </div>
-          </AccordionDetails>
-        </Accordion>
-
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography>All Material Icons css class examples</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <div className={styles.icons}>
-              Filled Icon:<span className="material-icons">account_circle</span>
-              Round Icon:<span className="material-icons-round">account_circle</span>
-              Outlined Icon:<span className="material-icons-outlined">account_circle</span>
-              Sharp Icon:<span className="material-icons-sharp">account_circle</span>
-              Two-tone Icon:<span className="material-icons-two-tone">account_circle</span>
-            </div>
-          </AccordionDetails>
-        </Accordion>
-
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography>All icons in with *-round css class.</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <div className={styles.icons}>
-              <span className="material-icons">search</span>
-              <span className="material-icons-round">accessibility_new</span>
-              <span className="material-icons-round">language</span>
-              <span className="material-icons-round">account_circle</span>
-              <span className="material-icons-round">help</span>
-              <span className="material-icons-round">volume_up</span>
-              <span className="material-icons-round">volume_off</span>
-              <span className="material-icons-round">volume_down</span>
-              <span className="material-icons-round">close</span>
-              <span className="material-icons-round">arrow_right_alt</span>
-              <span className="material-icons-round">backspace</span>
-              <span className="material-icons-round">credit_card</span>
-              <span className="material-icons-round">payments</span>
-            </div>
           </AccordionDetails>
         </Accordion>
 
@@ -301,8 +258,9 @@ export default function AllComponents() {
           </AccordionSummary>
           <AccordionDetails>
             <div className={styles.itemsList}>
+              Check /examples/all-components/page.tsx for example
               {/* This is an example to showcase network image. */}
-              <ItemCard imgPath="" altText='Casual Shoes' height={100} width={100} name='Casual Shoes' price='$200' />
+              {/* <ItemCard imgPath="" altText='Casual Shoes' height={100} width={100} name='Casual Shoes' price='$200' /> */}
               {/* This is an example to showcase downloaded asset image. */}
               {/* <ItemCard imgPath="/images/pineapple.jpg" altText='A Pineapple' height={100} width={100} name='A Pineapple' price='$20' /> */}
             </div>
@@ -364,6 +322,112 @@ export default function AllComponents() {
             aria-controls="panel2a-content"
             id="panel2a-header"
           >
+            <Typography>Modal Component</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <button type="button"
+              onClick={()=>setOpen(true)}>
+              Click to Open Modal
+            </button>
+            <HSModalComponent width="70%" height="70%" open={open} handleClose={()=>setOpen(false)}>
+              <div className={styles.modalHeader}>
+                Hello Hyosung
+              </div>
+              <div className={styles.modalContainer} >
+                <HSButton variant="outlined" startIcon={<span className="material-icons-round">help</span>}>
+                  Click!
+                </HSButton>
+                <HSButton variant='contained' color='primary'
+                  onClick={() => console.log("test button")}>
+                  Click!
+                </HSButton>
+              </div>
+            </HSModalComponent>
+          </AccordionDetails>
+        </Accordion>
+      </div>
+
+      <div className={styles.accordion}>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>SCSS Variable Usage</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.test}>
+              <p className={styles.primary18WNormalBlack2}>
+              This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.secondary28W600White3}>
+              This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.primary32W600Orange1}>
+              This is a sample test to test the scss variables and mixins.
+              </p>
+              <p className={styles.mixinExample}>
+              This is a sample test to test the scss variables and mixins.
+              </p>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>All Material Icons css class examples</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.icons}>
+            Filled Icon:<span className="material-icons">account_circle</span>
+            Round Icon:<span className="material-icons-round">account_circle</span>
+            Outlined Icon:<span className="material-icons-outlined">account_circle</span>
+            Sharp Icon:<span className="material-icons-sharp">account_circle</span>
+            Two-tone Icon:<span className="material-icons-two-tone">account_circle</span>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography>All icons in with *-round css class.</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={styles.icons}>
+              <span className="material-icons">search</span>
+              <span className="material-icons-round">accessibility_new</span>
+              <span className="material-icons-round">language</span>
+              <span className="material-icons-round">account_circle</span>
+              <span className="material-icons-round">help</span>
+              <span className="material-icons-round">volume_up</span>
+              <span className="material-icons-round">volume_off</span>
+              <span className="material-icons-round">volume_down</span>
+              <span className="material-icons-round">close</span>
+              <span className="material-icons-round">arrow_right_alt</span>
+              <span className="material-icons-round">backspace</span>
+              <span className="material-icons-round">credit_card</span>
+              <span className="material-icons-round">payments</span>
+            </div>
+          </AccordionDetails>
+        </Accordion>
+
+
+
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
             <Typography>Validation</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -379,7 +443,7 @@ export default function AllComponents() {
               />
               {!isValid && (
                 <p style={{ color: "red" }}>
-                  Please enter a number between 1 and 100.
+                Please enter a number between 1 and 100.
                 </p>
               )}
             </div>
@@ -397,8 +461,8 @@ export default function AllComponents() {
 
               {!isStringValid && (
                 <p style={{ color: "red" }}>
-                  Please enter a string with a length between 3 and 15
-                  characters.
+                Please enter a string with a length between 3 and 15
+                characters.
                 </p>
               )}
             </div>
@@ -415,7 +479,7 @@ export default function AllComponents() {
               />
               {!isAlphabeticStringValid && (
                 <p style={{ color: "red" }}>
-                  Please enter a string with only alphabetic characters.
+                Please enter a string with only alphabetic characters.
                 </p>
               )}
             </div>
@@ -432,7 +496,7 @@ export default function AllComponents() {
               />
               {!isValidAlphanumericValue && (
                 <p style={{ color: "red" }}>
-                  Please enter a string with only alphanumeric characters.
+                Please enter a string with only alphanumeric characters.
                 </p>
               )}
             </div>
@@ -441,7 +505,7 @@ export default function AllComponents() {
               <Typography>5. Custom Regex Validation</Typography>
               <br></br>
               <label htmlFor="customValidationInput">
-                Custom Validation Input:
+              Custom Validation Input:
               </label>
               <input
                 type="text"
@@ -452,8 +516,8 @@ export default function AllComponents() {
 
               {!isValidRegex && (
                 <p style={{ color: "red" }}>
-                  Please enter a string with only alphanumeric
-                  characters(custom).
+                Please enter a string with only alphanumeric
+                characters(custom).
                 </p>
               )}
             </div>
@@ -464,18 +528,13 @@ export default function AllComponents() {
               <label htmlFor="creditCardInput">Credit Card Number:</label>
               <input
                 type="text"
-                id="creditCardInput"
                 value={creditCardNumber}
                 onChange={handleCreditCardValidationChange}
+                placeholder="Enter credit card number"
               />
-
-              {!isValidCreditCardNumber && (
-                <p style={{ color: "red" }}>
-                  Please enter a valid credit card number.
-                </p>
-              )}
+              {!isValidCreditCardNumber && <p style={{ color: "red" }}>Invalid credit card number</p>}
             </div>
-
+          
             <div>
               <br></br>
               <Typography>7. Date Validation</Typography>
@@ -489,12 +548,11 @@ export default function AllComponents() {
                 onChange={handleDateChange}
               />
               {!dateValid && (
-                <p style={{ color: "red" }}>Please enter a valid date in the format MM/DD/YYYY.</p>
+                <p style={{ color: "red" }}>{errorMessage}</p>
               )}
             </div>
           </AccordionDetails>
         </Accordion>
-
       </div>
     </div>
   )
