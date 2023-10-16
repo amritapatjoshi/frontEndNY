@@ -30,6 +30,9 @@ jobs:
         chmod +x gitleaks-linux-amd64
         ./gitleaks-linux-amd64 -o gitleaks-report.json
 
+    - name: Build Docker image
+      run: docker build -t SCO-UI
+
     # - name: Run Tests
     #   run: npm test 
 
