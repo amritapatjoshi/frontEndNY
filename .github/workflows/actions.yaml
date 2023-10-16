@@ -31,7 +31,7 @@ jobs:
         ./gitleaks-linux-amd64 -o gitleaks-report.json
 
     - name: Build Docker image
-      run: docker build -t SCO-UI
+      run: docker build -t sco-ui .
 
     # - name: Run Tests
     #   run: npm test 
