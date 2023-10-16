@@ -1,12 +1,6 @@
 import React from "react"
 import Lottie from "react-lottie-player"
-
-interface ILottiePlayerProps {
-  animationData: any;
-  loop?: boolean; // Make loop and play optional
-  play?: boolean;
-  className?: string;
-}
+import ILottiePlayerProps from "./hs-lottie-player-interface"
 
 function LottiePlayer({ animationData, loop, play, className }: ILottiePlayerProps) {
   return (

@@ -13,7 +13,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import HSButton from "@/shared/components/hs-button/hs-button"
 import HSDangerousComponent from "@/shared/components/hs-dangerous-component/hs-dangerous-component"
 import UserLinks from "@/shared/components/hs-user-links/hs-user-links"
-import TileCard from "@/shared/components/hs-tile-component/hs-tile-component"
+import TileCard from "@/shared/components/hs-tile/hs-tile"
 import HSItemList from "@/shared/components/hs-item-list/hs-item-list"
 import HSModalComponent from "@/shared/components/hs-modal/hs-modal"
 import LottiePlayer from "@/shared/components/hs-lottie-player/hs-lottie-player"
@@ -127,7 +127,7 @@ export default function AllComponents() {
 
     // Check if the entered date is in 'MM/DD/YYYY','MM-DD-YYYY' format
     const isValidFormat = expectedFormats.some((format) => isValidDate(newDate, format))
-    
+
     // Check if the entered date is not in the future
     const isFutureDate = new Date(newDate) > new Date()
 
@@ -536,7 +536,7 @@ export default function AllComponents() {
               />
               {!isValidCreditCardNumber && <p style={{ color: "red" }}>Invalid credit card number</p>}
             </div>
-          
+
             <div>
               <br></br>
               <Typography>7. Date Validation</Typography>

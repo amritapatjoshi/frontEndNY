@@ -1,16 +1,7 @@
 import React, { useState } from "react"
 import styles from "./hs-item-card.module.scss"
+import IItemCardProps from "./hs-item-card-interface"
 import Image from "next/image"
-
-interface IItemCardProps {
-  imgPath: string,
-  altText: string,
-  width?: number,
-  height?: number,
-  name: string,
-  price: string,
-  style?: object
-}
 
 function ItemCard(props: IItemCardProps) {
 

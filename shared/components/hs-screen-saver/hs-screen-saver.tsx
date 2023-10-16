@@ -4,7 +4,7 @@ import styles from "./hs-screen-saver.module.scss"
 import screensaverLottieJson from "@/public/lottie-files/Screensaver BG.json"
 import Image from "next/image"
 import LottiePlayer from "../hs-lottie-player/hs-lottie-player"
-import { SCREENSAVER_TIMEOUT } from "./constants"
+import { SC_SCREENSAVER_TIMEOUT } from "@/shared/config/constants"
 
 function Screensaver() {
   const [isScreensaverActive, setIsScreensaverActive] = useState(false)
@@ -15,7 +15,7 @@ function Screensaver() {
     const timeoutId = setTimeout(function () {
       setIsScreensaverActive(true)
       setShowPopup(true)
-    }, SCREENSAVER_TIMEOUT)
+    }, SC_SCREENSAVER_TIMEOUT)
 
     setScreensaverTimeoutId(timeoutId)
   }

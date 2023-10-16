@@ -1,13 +1,7 @@
 "use client"
 import React from "react"
-import styles from "./hs-tile-component.module.scss"
-
-interface ITileCardProps {
-  title: string,
-  body: string,
-  onClick?: () => void,
-  style?: object,
-}
+import styles from "./hs-tile.module.scss"
+import ITileCardProps from "./hs-tile-interface"
 
 function TileCard(props: ITileCardProps) {
 

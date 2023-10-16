@@ -3,12 +3,7 @@ import * as React from "react"
 import Box from "@mui/material/Box"
 import List from "@mui/material/List"
 import styles from "./hs-item-list.module.scss"
-
-interface IProps {
-  itemName?: any;
-  quantity?: any;
-  price?: any;
-}
+import IProps from "./hs-item-list-interface"
 
 export default function HSItemList(props: IProps) {
   const { itemName, quantity, price } = props

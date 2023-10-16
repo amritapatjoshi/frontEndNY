@@ -1,14 +1,7 @@
 import * as React from "react"
 import Box from "@mui/material/Box"
 import Modal from "@mui/material/Modal"
-
-interface IProps {
-    width?: string;
-    height?: string;
-    children?: React.ReactNode;
-    handleClose?: () => void;
-    open: boolean;
-}
+import IProps from "./hs-modal-interface"
 
 export default function HSModalComponent(props: IProps) {
   const style = {

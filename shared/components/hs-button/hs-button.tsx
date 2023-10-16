@@ -1,11 +1,8 @@
 import * as React from "react"
-import Button, { ButtonProps } from "@mui/material/Button"
+import Button from "@mui/material/Button"
 import { styled } from "@mui/material/styles"
 import styles from "./hs-button.module.scss"
-
-interface IButtonProps extends ButtonProps {
-    // Add custom prop components
-}
+import IButtonProps from "./hs-button-interface"
 
 const CustomButton = styled(Button) ({
   borderRadius: "46px",
