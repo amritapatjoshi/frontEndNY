@@ -12,6 +12,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    
+    - name: Run GitLeaks Scan
+      run: |
+        wget https://github.com/zricethezav/gitleaks/releases/download/v7.6.0/gitleaks-linux-amd64
+        chmod +x gitleaks-linux-amd64
+        ./gitleaks-linux-amd64 -o gitleaks-report.json  
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -24,11 +30,6 @@ jobs:
     - name: Build Next JS App
       run: npm run build 
 
-    - name: Run GitLeaks Scan
-      run: |
-        wget https://github.com/zricethezav/gitleaks/releases/download/v7.6.0/gitleaks-linux-amd64
-        chmod +x gitleaks-linux-amd64
-        ./gitleaks-linux-amd64 -o gitleaks-report.json
 
     # - name: Run Tests
     #   run: npm test 
