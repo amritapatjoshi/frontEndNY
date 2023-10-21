@@ -30,6 +30,8 @@ jobs:
     - name: Build Next JS App
       run: npm run build 
 
+    # will configure with aws through secrets 
+
 
     # - name: Run Tests
     #   run: npm test 
